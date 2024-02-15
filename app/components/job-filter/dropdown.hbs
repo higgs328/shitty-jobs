@@ -1,0 +1,41 @@
+<div class="dropdown col col-md-3 mt-4 mb-3">
+    <BasicDropdown 
+        @matchTriggerWidth={{true}} 
+        @verticalPosition="below"
+        @onOpen={{this.autoScroll}}
+        as |dropdown|
+    >
+
+        {{!-- Trigger --}}
+        <dropdown.Trigger class="border-bottom border-dark border-3">
+            <div class="trigger-label mb-1">
+                {{#if this.isEmpty}}
+                    <FaIcon 
+                        @icon="circle-notch" 
+                        @spin={{true}}
+                    ></FaIcon> 
+                {{else}}
+                    <b>{{@label}}</b>
+                    <FaIcon
+                        @icon="angle-down"
+                        @rotation={{if dropdown.isOpen 180 0}}
+                        class="float-end mt-1"
+                    ></FaIcon>
+                {{/if}}
+            </div>
+        </dropdown.Trigger>
+
+        {{!-- Content --}}
+        <dropdown.Content 
+            @class="dropdown-content"
+            class="border"
+        >
+            <ul class="list-group rounded-0">
+                {{#each this.uniqueOptions as |option|}}
+                    <li class="list-group-item border-0">{{option}}</li>
+                {{/each}}
+            </ul>
+        </dropdown.Content>
+
+    </BasicDropdown>
+</div>

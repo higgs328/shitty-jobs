@@ -1,0 +1,18 @@
+<div id="job-filter">
+
+    {{!-- results --}}
+    <JobFilter::ResultSection 
+        @results={{@results}}
+    ></JobFilter::ResultSection>
+
+    {{!-- keywords --}}
+    <JobFilter::KeywordSection 
+        @keywords={{undefined}}
+    ></JobFilter::KeywordSection>
+
+    {{!-- filters --}}
+    <JobFilter::DropdownSection 
+        @results={{@results}}
+    ></JobFilter::DropdownSection>
+
+</div>

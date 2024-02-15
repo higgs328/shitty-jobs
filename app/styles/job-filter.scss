@@ -1,0 +1,42 @@
+#job-filter {
+  width: 100%;
+
+  #keyword-section {
+    margin: 1.2rem;
+  }
+
+  #keyword-section .keyword-label {
+    font-size: 1rem;
+    font-weight: 800;
+  }
+
+  #keyword-section .keyword .keyword-label {
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: capitalize;
+  }
+
+  #dropdown-section {
+    background-color: #f6f6f6;
+    margin: 1.75rem 0 4rem;
+  }
+
+  .dropdown {
+    height: 2.5rem;
+    min-width: 10rem;
+  }
+
+  .dropdown svg {
+    transition: all 0.3s ease-out;
+  }
+
+  @media (width < 17.5rem) {
+    #keyword-section {
+      display: none;
+    }
+
+    #dropdown-section {
+      display: none;
+    }
+  }
+}

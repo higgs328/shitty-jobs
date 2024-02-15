@@ -1,0 +1,24 @@
+#site {
+  #content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 125rem;
+    margin: 0 auto;
+  }
+
+  @media (width <= 62rem) {
+    #header .col-l {
+      text-align: center !important;
+    }
+
+    #header .col-m {
+      margin-top: 1rem !important;
+      text-align: center !important;
+    }
+
+    #header .col-r .navbar {
+      justify-content: center !important;
+    }
+  }
+}

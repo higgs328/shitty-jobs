@@ -1,0 +1,35 @@
+<div class="job-card">
+    <div class="card border-secondary shadow-sm {{if this.isFlipped 'flipped'}}">
+
+        {{!-- Front of the card --}}
+        <div class="face front">
+
+            <div class="card-header bg-transparent border-0">
+                <nav class="navbar justify-content-end">
+                    <div class="btn-group">
+                        <button class="btn btn-light" type="button">
+                            <FaIcon @prefix="far" @icon="star" class="fa-lg"></FaIcon>
+                        </button>
+                    </div>
+                </nav>
+                <div class="card-title fs-5 fw-bold">{{clean @job.businessTitle}}</div>
+            </div>
+
+            <div class="card-body">
+                <p>{{clean @job.agency}}<br>{{clean @job.workLocation}}</p>
+                <p>{{@job.salaryLabel}}<br>{{clean @job.fullTimePartTimeLabel}}</p>
+                <p>{{clean @job.examLabel}}</p>
+            </div>
+
+            <div class="card-footer bg-transparent border-0">
+                {{clean @job.postingAgeLabel}}
+            </div>
+
+        </div>
+        
+        {{!-- Back of the card --}}
+        <div class="face back">
+        </div>
+
+    </div>
+</div>

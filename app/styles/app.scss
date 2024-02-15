@@ -1,0 +1,25 @@
+/* stylelint-disable */
+@import "ember-bootstrap/bootstrap";
+@import "ember-basic-dropdown";
+@import "app/styles/site.scss";
+@import "app/styles/job-filter.scss";
+@import "app/styles/job-search.scss";
+@import "app/styles/job.scss";
+/* stylelint-enable */
+
+*:focus,
+*:active {
+  outline: none;
+}
+
+.ember-basic-dropdown-content {
+  max-height: 0;
+  overflow: hidden auto;
+  transition: max-height 0.3s ease-out;
+}
+
+/* stylelint-disable */
+.ember-basic-dropdown--transitioned-in {
+  max-height: 15rem;
+}
+/* stylelint-enable */
