@@ -46,30 +46,40 @@ export default class JobModel extends Model {
   }
 
   get salaryLabel() {
+    if (this.salaryRangeFromLabel === this.salaryRangeToLabel) {
+      return this.salaryRangeToLabel;
+    }
     return `${this.salaryRangeFromLabel} - ${this.salaryRangeToLabel}`;
   }
 
   get salaryFrequencyLabel() {
     if (this.salaryFrequency === 'Annual') {
       return 'a year';
-    } else {
-      return 'a hour';
     }
+    if (this.salaryFrequency === 'Daily') {
+      return 'a day';
+    }
+    if (this.salaryFrequency === 'Hourly') {
+      return 'an hour';
+    }
+    return '';
   }
 
   get fullTimePartTimeLabel() {
     if (this.fullTimePartTimeIndicator === 'F') {
       return 'full-time';
-    } else {
+    }
+    if (this.fullTimePartTimeIndicator === 'P') {
       return 'part-time';
     }
+    return 'not-specified';
   }
 
   get isExamRequired() {
-    if (this.titleClassification.toUpperCase().startsWith('NON-COMP')) {
-      return false;
-    } else {
+    if (this.titleClassification === 'Competitive-1') {
       return true;
+    } else {
+      return false;
     }
   }
 

@@ -38,10 +38,12 @@
                 <p>
                     {{@job.salaryLabel}}
                     <br>
-                    {{clean @job.fullTimePartTimeLabel}}
+                    {{@job.salaryFrequencyLabel}}, {{@job.fullTimePartTimeLabel}}
                 </p>
                 <p>
-                    {{clean @job.examLabel}}
+                    {{@job.titleClassification}}
+                    <br>
+                    {{@job.examLabel}}
                 </p>
             </div>
 
