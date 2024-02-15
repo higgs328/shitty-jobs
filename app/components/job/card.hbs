@@ -1,122 +1,35 @@
 <div class="job-card">
+    <div class="card border-secondary shadow-sm {{if this.isFlipped 'flipped'}}">
 
-  <div
-    class="card flex-col-1 border-primary shadow-sm
-      {{if this.isFlipped 'flipped'}}"
-  >
-    <div class="ribbon ribbon-{{@job.postingDateCategory}}">
-      {{@job.postingDateCategory}}
-    </div>
-    {{! Front of the card }}
-    <div class="face front flex-col-1">
+        {{!-- Front of the card --}}
+        <div class="face front">
 
-      {{! Header }}
-      <div class="card-header bg-transparent border-0 overflow-hidden">
+            <div class="card-header bg-transparent border-0">
+                <nav class="navbar justify-content-end">
+                    <div class="btn-group">
+                        <button class="btn btn-light" type="button">
+                            <FaIcon @prefix="far" @icon="star" class="fa-lg"></FaIcon>
+                        </button>
+                    </div>
+                </nav>
+                <div class="card-title fs-5 fw-bold">{{clean @job.businessTitle}}</div>
+            </div>
 
-        {{! Toolbar }}
-        <nav class="navbar justify-content-end" aria-label="nav-front">
-          <div class="btn-group">
-            <button
-              class="btn btn-light"
-              type="button"
-              {{on "click" this.toggleFavorite}}
-            >
-              {{#if @job.isFavorite}}
-                <FaIcon @prefix="fas" @icon="star" class="fa-lg text-warning" />
-              {{else}}
-                <FaIcon @prefix="far" @icon="star" class="fa-lg" />
-              {{/if}}
-            </button>
-            <button
-              class="btn btn-light"
-              type="button"
-              {{on "click" this.flip}}
-            >
-              <FaIcon @prefix="fas" @icon="ellipsis" class="fa-lg" />
-            </button>
-          </div>
-        </nav>
+            <div class="card-body">
+                <p>{{clean @job.agency}}<br>{{clean @job.workLocation}}</p>
+                <p>{{@job.salaryLabel}}<br>{{clean @job.fullTimePartTimeLabel}}</p>
+                <p>{{clean @job.examLabel}}</p>
+            </div>
 
-        {{! Title }}
-        <div class="card-title fs-4 fw-bold">
-          {{clean @job.businessTitle}}
+            <div class="card-footer bg-transparent border-0">
+                {{clean @job.postingAgeLabel}}
+            </div>
+
+        </div>
+        
+        {{!-- Back of the card --}}
+        <div class="face back">
         </div>
 
-      </div>
-
-      {{! Body }}
-      <div class="card-body overflow-hidden">
-        <p>
-          {{clean @job.agency}}
-          <br />
-          {{clean @job.workLocation}}
-        </p>
-        <p>
-          {{@job.salaryLabel}}
-          <br />
-          {{@job.salaryFrequencyLabel}},
-          {{@job.fullTimePartTimeLabel}}
-        </p>
-        <p>
-          {{@job.titleClassification}}
-          <br />
-          {{@job.examLabel}}
-        </p>
-      </div>
-
-      {{! Footer }}
-      <div
-        class="card-footer bg-transparent border-0 text-center overflow-hidden"
-      >
-
-        {{! Learn More }}
-        <a
-          class="btn btn-primary rounded-0 w-100 mb-2"
-          type="button"
-          href="https://cityjobs.nyc.gov/job/{{@job.jobId}}"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span class="float-start">Learn More</span>
-          <FaIcon @prefix="fas" @icon="arrow-right" class="float-end mt-1" />
-        </a>
-
-        {{! Posting Age }}
-        {{@job.postingAgeLabel}}
-
-      </div>
-
     </div>
-
-    {{! Back of the card }}
-    <div class="face back flex-col-1">
-
-      {{! Header }}
-      <div class="card-header bg-transparent border-0 overflow-hidden">
-
-        {{! Toolbar }}
-        <nav class="navbar justify-content-end" aria-label="nav-back">
-          <div class="btn-group">
-            <button
-              class="btn btn-light"
-              type="button"
-              {{on "click" this.flip}}
-            >
-              <FaIcon @prefix="fas" @icon="xmark" class="fa-lg" />
-            </button>
-          </div>
-        </nav>
-
-      </div>
-
-      {{! Body }}
-      <div class="card-body overflow-auto">
-        <p>
-          {{clean @job.jobDescription}}
-        </p>
-      </div>
-
-    </div>
-
-  </div>
 </div>

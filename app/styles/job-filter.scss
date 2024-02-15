@@ -1,6 +1,10 @@
 #job-filter {
   width: 100%;
 
+  #keyword-section {
+    margin: 1.2rem;
+  }
+
   #keyword-section .keyword-label {
     font-size: 1rem;
     font-weight: 800;
@@ -14,16 +18,12 @@
 
   #dropdown-section {
     background-color: #f6f6f6;
-  }
-
-  #dropdown-section .row {
-    margin: 0 auto;
-    max-width: 80rem;
+    margin: 1.75rem 0 4rem;
   }
 
   .dropdown {
     height: 2.5rem;
-    min-width: 17.5rem;
+    min-width: 10rem;
   }
 
   .dropdown svg {
@@ -39,32 +39,4 @@
       display: none;
     }
   }
-}
-
-.ember-basic-dropdown-content .dropdown-option-filter {
-  border-color: var(--bs-light-border-subtle);
-  border-style: solid;
-}
-
-.ember-basic-dropdown-content .dropdown-option input[type="checkbox"] {
-  margin-top: 1px;
-  margin-right: 1rem;
-}
-
-.ember-basic-dropdown-content .dropdown-option .option-label {
-  display: -webkit-box;
-  line-height: 1.2;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: normal;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-}
-
-.ember-basic-dropdown-content .sticky {
-  bottom: 0;
-  padding: 10px;
-  position: sticky;
-  text-align: center;
-  z-index: 100;
 }

@@ -1,36 +1,9 @@
 {{page-title "Results"}}
 
-<div id="site" class="bg-white">
+<JobFilter @results={{@model}}></JobFilter>
 
-  <Site::Header />
-
-  <Site::Body @title="City of New York jobs">
-
-    <JobFilter @loading={{false}} @results={{@model}} @params={{this.params}}>
-      <Pagination
-        @id="pagination-section"
-        @loading={{false}}
-        @page={{this.page}}
-        @pages={{this.pages}}
-        @label={{this.label}}
-      />
-    </JobFilter>
-
-    <div id="job-list" class="mb-4">
-      {{#each this.jobs as |job|}}
-        <Job::Card @job={{job}} />
-      {{/each}}
-    </div>
-
-    <Pagination
-      @id="pagination-footer"
-      @page={{this.page}}
-      @pages={{this.pages}}
-      @label={{this.label}}
-    />
-
-  </Site::Body>
-
-  <Site::Footer />
-
+<div id="job-list">
+  {{#each @model as |job|}}
+    <Job::Card @job={{job}}></Job::Card>
+  {{/each}}
 </div>

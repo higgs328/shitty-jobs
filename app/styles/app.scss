@@ -14,26 +14,12 @@
 
 .ember-basic-dropdown-content {
   max-height: 0;
-  overflow: hidden scroll;
+  overflow: hidden auto;
   transition: max-height 0.3s ease-out;
 }
 
-.ember-basic-dropdown--transitioned-in { /* stylelint-disable-line */
+/* stylelint-disable */
+.ember-basic-dropdown--transitioned-in {
   max-height: 15rem;
 }
-
-.flex-col-1 {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-
-.overflow-ellipsis {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.page-link.active {
-  background-color: #000;
-}
+/* stylelint-enable */

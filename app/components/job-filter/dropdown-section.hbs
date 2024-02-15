@@ -1,50 +1,35 @@
-<div id="dropdown-section" class="px-5 mb-3">
+<div id="dropdown-section" class="px-5">
 
-  <div class="row justify-content-center">
+    <div class="row">
 
-    {{! agency }}
-    <JobFilter::Dropdown
-      @type="list"
-      @loading={{@loading}}
-      @results={{@results}}
-      @params={{@params}}
-      @param="agency"
-      @label="Agency"
-      @key="agency"
-    />
+        {{!-- agency --}}
+        <JobFilter::Dropdown 
+            @results={{@results}} 
+            @key="agency"
+            @label="Agency"
+        ></JobFilter::Dropdown>
 
-    {{! civilServiceTitle }}
-    <JobFilter::Dropdown
-      @type="list"
-      @loading={{@loading}}
-      @results={{@results}}
-      @params={{@params}}
-      @param="title"
-      @label="Title"
-      @key="civilServiceTitle"
-    />
+        {{!-- civilServiceTitle --}}
+        <JobFilter::Dropdown 
+            @results={{@results}} 
+            @key="civilServiceTitle"
+            @label="Title"
+        ></JobFilter::Dropdown>
 
-    {{! titleClassification }}
-    <JobFilter::Dropdown
-      @type="list"
-      @loading={{@loading}}
-      @results={{@results}}
-      @params={{@params}}
-      @param="tclass"
-      @label="Class"
-      @key="titleClassification"
-    />
+        {{!-- titleClassification --}}
+        <JobFilter::Dropdown 
+            @results={{@results}} 
+            @key="titleClassification"
+            @label="Class"
+        ></JobFilter::Dropdown>
 
-    {{! salaryRangeTo }}
-    <JobFilter::Dropdown
-      @type="range"
-      @loading={{@loading}}
-      @results={{@results}}
-      @params={{@params}}
-      @param="salary"
-      @label="Salary"
-    />
+        {{!-- salaryRangeTo --}}
+        <JobFilter::Dropdown 
+            @results={{@results}} 
+            @key="salaryRangeTo"
+            @label="Salary"
+        ></JobFilter::Dropdown>
 
-  </div>
+    </div>
 
 </div>

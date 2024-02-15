@@ -1,9 +1,29 @@
 import Component from '@glimmer/component';
+import { cached, tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
-import { inject as service } from '@ember/service';
 
 export default class JobFilterDropdownComponent extends Component {
-  @service router;
+  @tracked options = [];
+
+  constructor() {
+    super(...arguments);
+    if (this.args.results) {
+      this.options = this.args.results.map((r) => r[this.args.key]);
+    }
+  }
+
+  @cached
+  get uniqueOptions() {
+    const unique = (value, index, self) => {
+      return self.indexOf(value) === index;
+    };
+    return this.options.filter(unique).sort();
+  }
+
+  @cached
+  get isEmpty() {
+    return Boolean(this.uniqueOptions.length === 0);
+  }
 
   @action
   autoScroll(dropdown, event) {
@@ -22,27 +42,5 @@ export default class JobFilterDropdownComponent extends Component {
         }
       }
     }, 500);
-  }
-
-  @action
-  apply(value) {
-    const queryParams = {
-      page: 1,
-    };
-    queryParams[this.args.param] = value;
-    this.router.transitionTo({
-      queryParams,
-    });
-  }
-
-  @action
-  clear() {
-    const queryParams = {
-      page: 1,
-    };
-    queryParams[this.args.param] = undefined;
-    this.router.transitionTo({
-      queryParams,
-    });
   }
 }

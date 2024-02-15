@@ -28,7 +28,6 @@ export default class JobModel extends Model {
   @attr titleCodeNo;
   @attr toApply;
   @attr workLocation;
-  @attr('bool', { defaultValue: false }) isFavorite;
 
   get currencyFormatter() {
     return new Intl.NumberFormat('en-US', {
@@ -47,40 +46,30 @@ export default class JobModel extends Model {
   }
 
   get salaryLabel() {
-    if (this.salaryRangeFromLabel === this.salaryRangeToLabel) {
-      return this.salaryRangeToLabel;
-    }
     return `${this.salaryRangeFromLabel} - ${this.salaryRangeToLabel}`;
   }
 
   get salaryFrequencyLabel() {
     if (this.salaryFrequency === 'Annual') {
       return 'a year';
+    } else {
+      return 'a hour';
     }
-    if (this.salaryFrequency === 'Daily') {
-      return 'a day';
-    }
-    if (this.salaryFrequency === 'Hourly') {
-      return 'an hour';
-    }
-    return '';
   }
 
   get fullTimePartTimeLabel() {
     if (this.fullTimePartTimeIndicator === 'F') {
       return 'full-time';
-    }
-    if (this.fullTimePartTimeIndicator === 'P') {
+    } else {
       return 'part-time';
     }
-    return 'not-specified';
   }
 
   get isExamRequired() {
-    if (this.titleClassification === 'Competitive-1') {
-      return true;
-    } else {
+    if (this.titleClassification.toUpperCase().startsWith('NON-COMP')) {
       return false;
+    } else {
+      return true;
     }
   }
 
@@ -106,28 +95,14 @@ export default class JobModel extends Model {
     return Math.floor(tDiff / (1000 * 60 * 60 * 24));
   }
 
-  get postingPDateAge() {
-    const pDate = new Date(this.processDate);
-    const cDate = new Date();
-    const tDiff = pDate - cDate;
-    return Math.floor(tDiff / (1000 * 60 * 60 * 24));
-  }
-
   get postingAgeLabel() {
-    const cDate = this.postingCDateAge;
-    const uDate = this.postingUDateAge;
+    const cDate = this.postingCDateAge >= 60 ? '60+' : this.postingCDateAge;
+    const uDate = this.postingUDateAge >= 60 ? '60+' : this.postingUDateAge;
     if (cDate !== uDate) {
       return `posted ${cDate} days ago. updated ${uDate} days ago.`;
     } else {
       return `posted ${cDate} days ago.`;
     }
-  }
-
-  get postingDateCategory() {
-    if (this.postingCDateAge <= 30) {
-      return 'new';
-    }
-    return undefined;
   }
 
   get properties() {

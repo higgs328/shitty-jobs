@@ -1,18 +1,18 @@
-<div id="job-filter" class="mb-4">
+<div id="job-filter">
 
-  {{! results }}
-  <JobFilter::ResultSection @loading={{@loading}} @results={{@results}} />
+    {{!-- results --}}
+    <JobFilter::ResultSection 
+        @results={{@results}}
+    ></JobFilter::ResultSection>
 
-  {{! keywords }}
-  <JobFilter::KeywordSection @loading={{@loading}} @keywords={{@params.q}} />
+    {{!-- keywords --}}
+    <JobFilter::KeywordSection 
+        @keywords={{undefined}}
+    ></JobFilter::KeywordSection>
 
-  {{! filters }}
-  <JobFilter::DropdownSection
-    @loading={{@loading}}
-    @results={{@results}}
-    @params={{@params}}
-  />
-
-  {{yield}}
+    {{!-- filters --}}
+    <JobFilter::DropdownSection 
+        @results={{@results}}
+    ></JobFilter::DropdownSection>
 
 </div>
