@@ -3,7 +3,6 @@
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
-  max-width: 112rem;
   justify-content: space-evenly;
   transition: all 0.3s ease-out;
   position: relative;
@@ -11,6 +10,9 @@
 }
 
 .job-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 25rem;
   width: 20rem;
 
   .border-secondary {
@@ -20,13 +22,24 @@
   .card {
     float: left;
     margin: 1rem;
-    min-height: 25rem;
     padding: 0.1rem;
     perspective: 800px;
     position: relative;
     transition: all 0.3s ease-out;
     transform-style: preserve-3d;
     width: -webkit-fill-available; /* stylelint-disable-line */
+  }
+
+  .card-header {
+    max-height: 10rem;
+  }
+
+  .card-body {
+    max-height: 20rem;
+  }
+
+  .card-footer {
+    font-size: x-small;
   }
 
   .card:hover {
@@ -59,10 +72,12 @@
   }
 
   .card-title {
+    display: -webkit-box;
     line-height: 1.2;
-  }
-
-  .card-footer {
-    font-size: x-small;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    -webkit-line-clamp: 3; /* Number of lines to show */
+    -webkit-box-orient: vertical;
   }
 }
