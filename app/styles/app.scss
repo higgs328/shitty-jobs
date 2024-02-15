@@ -21,3 +21,15 @@
 .ember-basic-dropdown--transitioned-in { /* stylelint-disable-line */
   max-height: 15rem;
 }
+
+.flex-col-1 {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.overflow-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

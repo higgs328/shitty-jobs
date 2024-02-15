@@ -1,29 +1,65 @@
 <div class="job-card">
-    <div class="card border-secondary shadow-sm {{if this.isFlipped 'flipped'}}">
+    <div class="card flex-col-1 border-primary shadow-sm {{if this.isFlipped 'flipped'}}">
 
         {{!-- Front of the card --}}
-        <div class="face front">
+        <div class="face front flex-col-1">
 
-            <div class="card-header bg-transparent border-0">
+
+            {{!-- Header --}}
+            <div class="card-header bg-transparent border-0 overflow-hidden">
+
+                {{!-- Toolbar --}}
                 <nav class="navbar justify-content-end">
                     <div class="btn-group">
                         <button class="btn btn-light" type="button">
                             <FaIcon @prefix="far" @icon="star" class="fa-lg"></FaIcon>
                         </button>
+                        <button class="btn btn-light" type="button">
+                            <FaIcon @prefix="fas" @icon="ellipsis" class="fa-lg"></FaIcon>
+                        </button>
                     </div>
                 </nav>
-                <div class="card-title fs-5 fw-bold">{{clean @job.businessTitle}}</div>
+
+                {{!-- Title --}}
+                <div class="card-title fs-4 fw-bold">
+                    {{clean @job.businessTitle}}
+                </div>
+
             </div>
 
-            <div class="card-body">
-                <p>{{clean @job.agency}}<br>{{clean @job.workLocation}}</p>
-                <p>{{@job.salaryLabel}}<br>{{clean @job.fullTimePartTimeLabel}}</p>
-                <p>{{clean @job.examLabel}}</p>
+
+            {{!-- Body --}}
+            <div class="card-body overflow-hidden">
+                <p>
+                    {{clean @job.agency}}
+                    <br>
+                    {{clean @job.workLocation}}
+                </p>
+                <p>
+                    {{@job.salaryLabel}}
+                    <br>
+                    {{clean @job.fullTimePartTimeLabel}}
+                </p>
+                <p>
+                    {{clean @job.examLabel}}
+                </p>
             </div>
 
-            <div class="card-footer bg-transparent border-0">
+
+            {{!-- Footer --}}
+            <div class="card-footer bg-transparent border-0 text-center overflow-hidden">
+
+                {{!-- Learn More --}}
+                <button class="btn btn-primary rounded-0 w-100 mb-2" type="button">
+                    <span class="float-start">Learn More</span>
+                    <FaIcon @prefix="fas" @icon="arrow-right" class="float-end mt-1"></FaIcon>
+                </button>
+
+                {{!-- Posting Age --}}
                 {{clean @job.postingAgeLabel}}
+
             </div>
+
 
         </div>
         
