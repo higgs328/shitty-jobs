@@ -4,13 +4,14 @@
   display: flex;
   flex-wrap: wrap;
   max-width: 112rem;
-  justify-content: center;
+  justify-content: space-evenly;
+  transition: all .3s ease-out;
   position: relative;
   padding-bottom: 3rem;
 }
 
 .job-card {
-  max-width: 20rem;
+  width: 20rem;
 
   .border-secondary {
     border-color: #d3d3d3 !important;
@@ -19,11 +20,13 @@
   .card {
     float: left;
     margin: 1rem;
+    min-height: 25rem;
     padding: 0.1rem;
     perspective: 800px;
     position: relative;
     transition: all 0.3s ease-out;
     transform-style: preserve-3d;
+    width: 100%;
   }
 
   .card:hover {
