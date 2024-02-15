@@ -1,18 +1,20 @@
-<ContentLoader 
-  @speed=".5"
-  @height="400"
-  @width="320"
-  class="job-card card shadow-sm"
->
-  <polygon points="265,20 270,30 280,30 273,38 275,48 265,42 255,48 258,38 250,30 260,30" /> 
-                                                                {{!-- Favorite --}}
-  <rect x="20" y="40" rx="4" ry="4" width="180" height="30" />  {{!-- Title --}}
-  <rect x="20" y="260" rx="4" ry="4" width="250" height="15" /> {{!-- Salary --}}
-  <rect x="20" y="290" rx="4" ry="4" width="150" height="15" /> {{!-- Posted Date --}}
-  <rect x="20" y="120" rx="4" ry="4" width="200" height="15" /> {{!-- Agency --}}
-  <rect x="20" y="140" rx="4" ry="4" width="150" height="15" /> {{!-- Agency --}}
-  <rect x="20" y="170" rx="4" ry="4" width="100" height="15" /> {{!-- Salary Type --}}
-  <rect x="20" y="200" rx="4" ry="4" width="150" height="15" /> {{!-- Work Location --}}
-  <rect x="20" y="230" rx="4" ry="4" width="200" height="15" /> {{!-- Exam --}}
-  <rect x="20" y="350" rx="4" ry="4" width="280" height="30" /> {{!-- Learn More --}}
-</ContentLoader>
+<div class="job-card">
+  <ContentLoader 
+    @speed=".5"
+    @height="400"
+    @width="320"
+    class="card border-secondary shadow-sm"
+  >
+    <polygon points="265,20 270,30 280,30 273,38 275,48 265,42 255,48 258,38 250,30 260,30" /> 
+                                                                  {{!-- Favorite --}}
+    <rect x="20" y="40" rx="4" ry="4" width="180" height="30" />  {{!-- Title --}}
+    <rect x="20" y="260" rx="4" ry="4" width="250" height="15" /> {{!-- Salary --}}
+    <rect x="20" y="290" rx="4" ry="4" width="150" height="15" /> {{!-- Posted Date --}}
+    <rect x="20" y="120" rx="4" ry="4" width="200" height="15" /> {{!-- Agency --}}
+    <rect x="20" y="140" rx="4" ry="4" width="150" height="15" /> {{!-- Agency --}}
+    <rect x="20" y="170" rx="4" ry="4" width="100" height="15" /> {{!-- Salary Type --}}
+    <rect x="20" y="200" rx="4" ry="4" width="150" height="15" /> {{!-- Work Location --}}
+    <rect x="20" y="230" rx="4" ry="4" width="200" height="15" /> {{!-- Exam --}}
+    <rect x="20" y="350" rx="4" ry="4" width="280" height="30" /> {{!-- Learn More --}}
+  </ContentLoader>
+</div>
