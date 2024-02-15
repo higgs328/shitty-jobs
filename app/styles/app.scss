@@ -14,12 +14,10 @@
 
 .ember-basic-dropdown-content {
   max-height: 0;
-  overflow: hidden auto;
+  overflow: hidden scroll;
   transition: max-height 0.3s ease-out;
 }
 
-/* stylelint-disable */
-.ember-basic-dropdown--transitioned-in {
+.ember-basic-dropdown--transitioned-in { /* stylelint-disable-line */
   max-height: 15rem;
 }
-/* stylelint-enable */
