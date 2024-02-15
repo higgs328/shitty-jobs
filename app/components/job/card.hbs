@@ -9,12 +9,12 @@
             <div class="card-header bg-transparent border-0 overflow-hidden">
 
                 {{!-- Toolbar --}}
-                <nav class="navbar justify-content-end">
+                <nav class="navbar justify-content-end"  aria-label="nav-front">
                     <div class="btn-group">
                         <button class="btn btn-light" type="button">
                             <FaIcon @prefix="far" @icon="star" class="fa-lg"></FaIcon>
                         </button>
-                        <button class="btn btn-light" type="button">
+                        <button class="btn btn-light" type="button" {{on "click" this.flip}}>
                             <FaIcon @prefix="fas" @icon="ellipsis" class="fa-lg"></FaIcon>
                         </button>
                     </div>
@@ -64,7 +64,31 @@
         </div>
         
         {{!-- Back of the card --}}
-        <div class="face back">
+        <div class="face back flex-col-1">
+
+
+            {{!-- Header --}}
+            <div class="card-header bg-transparent border-0 overflow-hidden">
+
+                {{!-- Toolbar --}}
+                <nav class="navbar justify-content-end" aria-label="nav-back">
+                    <div class="btn-group">
+                        <button class="btn btn-light" type="button" {{on "click" this.flip}}>
+                            <FaIcon @prefix="fas" @icon="xmark" class="fa-lg"></FaIcon>
+                        </button>
+                    </div>
+                </nav>
+
+            </div>
+
+
+            {{!-- Body --}}
+            <div class="card-body overflow-auto">
+                <p>
+                    {{@job.jobDescription}}
+                </p>
+            </div>
+
         </div>
 
     </div>
