@@ -1,54 +1,25 @@
 import Controller from '@ember/controller';
 import { tracked } from '@glimmer/tracking';
+import { action } from '@ember/object';
 
 export default class JobsController extends Controller {
-  queryParams = ['q', 'page', 'order', 'agency', 'title', 'tclass', 'salary'];
-
   @tracked
   page = 1;
 
   @tracked
-  order = 'posting_date desc';
-
-  @tracked
-  size = 20;
-
-  @tracked
-  salary = 0;
-
-  get params() {
-    const { q, page, agency, title, tclass, salary } = this;
-    return {
-      q,
-      page,
-      agency,
-      title,
-      tclass,
-      salary,
-    };
-  }
+  ipp = 30;
 
   get pages() {
-    return Math.ceil(this.model.length / this.size);
-  }
-
-  get min() {
-    const { page, size } = this;
-    return (page - 1) * size;
-  }
-
-  get max() {
-    const { min, size, model } = this;
-    return min + size > model.length ? model.length : min + size;
+    return Math.ceil(this.model.length / this.ipp);
   }
 
   get jobs() {
-    const { min, max, model } = this;
-    return model.slice(min, max);
+    const { page, ipp } = this;
+    return this.model.slice((page - 1) * ipp, (page - 1) * ipp + ipp);
   }
 
-  get label() {
-    const { min, max, model } = this;
-    return model.length ? `${min + 1}-${max} of ${model.length}` : 0;
+  @action
+  changePage(offset) {
+    this.page += offset;
   }
 }

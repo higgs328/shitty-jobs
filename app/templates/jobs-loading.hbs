@@ -1,9 +1,9 @@
 {{page-title "Loading"}}
 
-<JobFilter></JobFilter>
+<JobFilter />
 
 <div id="job-list">
   {{#each (range 10) as |index|}}
-    <Job::CardLoading @index={{index}}></Job::CardLoading>
+    <Job::CardLoading @index={{index}} />
   {{/each}}
 </div>

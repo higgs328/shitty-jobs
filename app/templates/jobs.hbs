@@ -1,9 +1,15 @@
 {{page-title "Results"}}
 
-<JobFilter @results={{@model}}></JobFilter>
+<JobFilter @results={{@model}} />
 
 <div id="job-list">
-  {{#each @model as |job|}}
-    <Job::Card @job={{job}}></Job::Card>
+  {{#each this.jobs as |job|}}
+    <Job::Card @job={{job}} />
   {{/each}}
 </div>
+
+<Pagination
+  @page={{this.page}}
+  @pages={{this.pages}}
+  @changePage={{this.changePage}}
+/>

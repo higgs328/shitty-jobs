@@ -1,65 +1,26 @@
-<div id={{@id}} class="container d-flex justify-content-center">
+<div class="pagination-controls">
 
-  {{! Sort Controls }}
-  <div class="btn-group mx-3">
+  <button
+    disabled={{(eq @page 1)}}
+    type="button"
+    {{on "click" (fn @changePage -1)}}
+  >
+    Previous
+  </button>
 
-    {{! Posting Date }}
-    <LinkTo
-      class="btn btn-outline-dark"
-      @route="jobs"
-      @query={{hash order="posting_date desc"}}
-    >
-      <FaIcon @icon="calendar-days" />
-    </LinkTo>
+  <span>
+    Page
+    {{@page}}
+    of
+    {{@pages}}
+  </span>
 
-    {{! Salary }}
-    <LinkTo
-      class="btn btn-outline-dark"
-      @route="jobs"
-      @query={{hash order="salary_range_to desc"}}
-    >
-      <FaIcon @icon="money-bill-1" />
-    </LinkTo>
-
-  </div>
-
-  {{! Pagination Controls}}
-  <div class="btn-group mx-3">
-
-    {{! Previous }}
-    <LinkTo
-      class="btn btn-outline-dark"
-      @disabled={{lte @page 1}}
-      @route="jobs"
-      @query={{hash page=(add @page -1)}}
-    >
-      <FaIcon class={{if (lte @page 1) "text-secondary"}} @icon="arrow-left" />
-    </LinkTo>
-
-    {{! Count }}
-    {{#if @loading}}
-      <div class="btn btn-outline-dark">
-        <FaIcon @icon="circle-notch" @spin={{true}} />
-      </div>
-
-    {{else}}
-      <LinkTo class="btn btn-outline-dark" @disabled={{true}} @route="jobs">
-        {{@label}}
-      </LinkTo>
-    {{/if}}
-
-    {{! Next }}
-    <LinkTo
-      class="btn btn-outline-dark"
-      @disabled={{gte @page @pages}}
-      @route="jobs"
-      @query={{hash page=(add @page 1)}}
-    >
-      <FaIcon
-        class={{if (gte @page @pages) "text-secondary"}}
-        @icon="arrow-right"
-      />
-    </LinkTo>
-  </div>
+  <button
+    disabled={{(eq @page @pages)}}
+    type="button"
+    {{on "click" (fn @changePage 1)}}
+  >
+    Next
+  </button>
 
 </div>
