@@ -9,15 +9,15 @@ export default class JobsController extends Controller {
   page = 1;
 
   @tracked
-  ipp = 30;
+  size = 30;
 
   get pages() {
-    return Math.ceil(this.model.length / this.ipp);
+    return Math.ceil(this.model.length / this.size);
   }
 
   get jobs() {
-    const { page, ipp } = this;
-    return this.model.slice((page - 1) * ipp, (page - 1) * ipp + ipp);
+    const { page, size } = this;
+    return this.model.slice((page - 1) * size, (page - 1) * size + size);
   }
 
   @action

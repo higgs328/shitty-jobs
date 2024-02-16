@@ -1,11 +1,11 @@
 <nav id="pagination" aria-label="pagination">
   <ul class="pagination">
 
-    {{! Previous }}
-    <li class="page-item {{if (eq @page 1) 'disabled'}}">
+    {{! Prev }}
+    <li class="page-item">
       <LinkTo
         class="page-link"
-        @disabled={{eq @page 1}}
+        @disabled={{lte @page 1}}
         @route="jobs"
         @query={{hash page=(add @page -1)}}
       >
@@ -13,10 +13,13 @@
       </LinkTo>
     </li>
 
-    {{! Prev Page # }}
-    <li class="page-item {{if (eq @page 1) 'd-none'}}">
+    {{! # Prev }}
+    <li
+      class="page-item {{if (not (between (add @page -1) 1 @pages)) 'd-none'}}"
+    >
       <LinkTo
         class="page-link"
+        @disabled={{lte @page 1}}
         @route="jobs"
         @query={{hash page=(add @page -1)}}
       >
@@ -24,15 +27,17 @@
       </LinkTo>
     </li>
 
-    {{! Curr Page # }}
+    {{! # Curr }}
     <li class="page-item">
       <LinkTo class="page-link" @route="jobs" @query={{hash page=@page}}>
         {{@page}}
       </LinkTo>
     </li>
 
-    {{! Next Page # }}
-    <li class="page-item {{if (eq @page @pages) 'd-none'}}">
+    {{! # Next }}
+    <li
+      class="page-item {{if (not (between (add @page 1) 1 @pages)) 'd-none'}}"
+    >
       <LinkTo
         class="page-link"
         @route="jobs"
@@ -43,10 +48,10 @@
     </li>
 
     {{! Next }}
-    <li class="page-item {{if (eq @page @pages) 'disabled'}}">
+    <li class="page-item">
       <LinkTo
         class="page-link"
-        @disabled={{eq @page @pages}}
+        @disabled={{gte @page @pages}}
         @route="jobs"
         @query={{hash page=(add @page 1)}}
       >
