@@ -1,0 +1,26 @@
+<div class="pagination-controls">
+
+  <button
+    disabled={{(eq @page 1)}}
+    type="button"
+    {{on "click" (fn @changePage -1)}}
+  >
+    Previous
+  </button>
+
+  <span>
+    Page
+    {{@page}}
+    of
+    {{@pages}}
+  </span>
+
+  <button
+    disabled={{(eq @page @pages)}}
+    type="button"
+    {{on "click" (fn @changePage 1)}}
+  >
+    Next
+  </button>
+
+</div>
