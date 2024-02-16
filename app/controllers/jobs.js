@@ -3,6 +3,8 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 
 export default class JobsController extends Controller {
+  queryParams = ['page'];
+
   @tracked
   page = 1;
 
