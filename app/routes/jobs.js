@@ -18,7 +18,7 @@ export default class JobsRoute extends Route {
   }
 
   @action
-  didTransition() {
+  willTransition() {
     window.scrollTo(0, 0);
     return true;
   }
