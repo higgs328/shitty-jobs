@@ -1,63 +1,45 @@
-<nav id="pagination" aria-label="pagination">
-  <ul class="pagination">
+<div id={{@id}} class="d-flex justify-content-center">
 
-    {{! Prev }}
-    <li class="page-item">
-      <LinkTo
-        class="page-link"
-        @disabled={{lte @page 1}}
-        @route="jobs"
-        @query={{hash page=(add @page -1)}}
-      >
-        Previous
-      </LinkTo>
-    </li>
+  <div class="btn-group">
 
-    {{! # Prev }}
-    <li
-      class="page-item {{if (not (between (add @page -1) 1 @pages)) 'd-none'}}"
+    {{! Previous }}
+    <LinkTo
+      class="btn btn-outline-dark border-2"
+      @disabled={{lte @page 1}}
+      @route="jobs"
+      @query={{hash page=(add @page -1)}}
     >
-      <LinkTo
-        class="page-link"
-        @disabled={{lte @page 1}}
-        @route="jobs"
-        @query={{hash page=(add @page -1)}}
-      >
-        {{add @page -1}}
-      </LinkTo>
-    </li>
+      <FaIcon class={{if (lte @page 1) "text-secondary"}} @icon="arrow-left" />
+    </LinkTo>
 
-    {{! # Curr }}
-    <li class="page-item">
-      <LinkTo class="page-link" @route="jobs" @query={{hash page=@page}}>
-        {{@page}}
-      </LinkTo>
-    </li>
+    {{! Count }}
+    {{#if true}}
+      <div class="btn btn-outline-dark border-2">
+        <FaIcon @icon="circle-notch" @spin={{true}} />
+      </div>
 
-    {{! # Next }}
-    <li
-      class="page-item {{if (not (between (add @page 1) 1 @pages)) 'd-none'}}"
-    >
+    {{else}}
       <LinkTo
-        class="page-link"
+        class="btn btn-outline-dark border-2"
+        @disabled={{true}}
         @route="jobs"
-        @query={{hash page=(add @page 1)}}
       >
-        {{add @page 1}}
+        1-20 of 200
       </LinkTo>
-    </li>
+    {{/if}}
 
     {{! Next }}
-    <li class="page-item">
-      <LinkTo
-        class="page-link"
-        @disabled={{gte @page @pages}}
-        @route="jobs"
-        @query={{hash page=(add @page 1)}}
-      >
-        Next
-      </LinkTo>
-    </li>
+    <LinkTo
+      class="btn btn-outline-dark border-2"
+      @disabled={{gte @page @pages}}
+      @route="jobs"
+      @query={{hash page=(add @page 1)}}
+    >
+      <FaIcon
+        class={{if (gte @page @pages) "text-secondary"}}
+        @icon="arrow-right"
+      />
+    </LinkTo>
+  </div>
 
-  </ul>
-</nav>
+</div>
