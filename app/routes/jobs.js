@@ -1,16 +1,25 @@
 import Route from '@ember/routing/route';
+import { later } from '@ember/runloop';
 import { service } from '@ember/service';
+import { action } from '@ember/object';
 
 export default class JobsRoute extends Route {
   @service store;
 
-  model() {
-    return new Promise((resolve) => {
-      // This is dumb, but simulating a delay to show skeleton screen
-      setTimeout(async () => {
-        const jobs = await this.store.findAll('job');
-        resolve(jobs);
-      }, 1000);
-    });
+  queryParams = {
+    page: {
+      refreshModel: true,
+    },
+  };
+
+  async model() {
+    await new Promise((resolve) => later(resolve, 500));
+    return this.currentModel || (await this.store.findAll('job'));
+  }
+
+  @action
+  didTransition() {
+    window.scrollTo(0, 0);
+    return true;
   }
 }
