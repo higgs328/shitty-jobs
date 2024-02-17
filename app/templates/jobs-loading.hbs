@@ -4,8 +4,10 @@
   <Pagination />
 </JobFilter>
 
-<div id="job-list">
+<div id="job-list" class="mb-4">
   {{#each (range 10) as |index|}}
     <Job::CardLoading @index={{index}} />
   {{/each}}
 </div>
+
+<Pagination />
