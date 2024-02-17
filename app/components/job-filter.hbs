@@ -1,4 +1,4 @@
-<div id="job-filter">
+<div id="job-filter" class="mb-4">
 
   {{! results }}
   <JobFilter::ResultSection @results={{@results}} />
@@ -8,5 +8,7 @@
 
   {{! filters }}
   <JobFilter::DropdownSection @results={{@results}} />
+
+  {{yield}}
 
 </div>

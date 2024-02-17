@@ -1,6 +1,13 @@
 {{page-title "Results"}}
 
-<JobFilter @results={{@model}} />
+<JobFilter @results={{@model}}>
+  <Pagination
+    @id="pagination-section"
+    @page={{this.page}}
+    @pages={{this.pages}}
+    @changePage={{this.changePage}}
+  />
+</JobFilter>
 
 <div id="job-list">
   {{#each this.jobs as |job|}}
@@ -9,6 +16,7 @@
 </div>
 
 <Pagination
+  @id="pagination-footer"
   @page={{this.page}}
   @pages={{this.pages}}
   @changePage={{this.changePage}}
