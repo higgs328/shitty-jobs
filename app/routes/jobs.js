@@ -8,7 +8,7 @@ export default class JobsRoute extends Route {
 
   queryParams = {
     page: {
-      refreshModel: true,
+      refreshModel: false,
     },
   };
 

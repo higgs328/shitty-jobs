@@ -13,19 +13,19 @@
     </LinkTo>
 
     {{! Count }}
-    {{#if true}}
-      <div class="btn btn-outline-dark border-2">
-        <FaIcon @icon="circle-notch" @spin={{true}} />
-      </div>
-
-    {{else}}
+    {{#if @label}}
       <LinkTo
         class="btn btn-outline-dark border-2"
         @disabled={{true}}
         @route="jobs"
       >
-        1-20 of 200
+        {{@label}}
       </LinkTo>
+
+    {{else}}
+      <div class="btn btn-outline-dark border-2">
+        <FaIcon @icon="circle-notch" @spin={{true}} />
+      </div>
     {{/if}}
 
     {{! Next }}
