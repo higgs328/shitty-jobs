@@ -2,13 +2,20 @@ import Controller from '@ember/controller';
 import { tracked } from '@glimmer/tracking';
 
 export default class JobsController extends Controller {
-  queryParams = ['page'];
+  queryParams = ['page', '$q'];
 
   @tracked
   page = 1;
 
   @tracked
   size = 30;
+
+  @tracked
+  $q = '';
+
+  get keywords() {
+    return this.$q;
+  }
 
   get pages() {
     return Math.ceil(this.model.length / this.size);
