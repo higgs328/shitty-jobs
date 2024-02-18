@@ -6,20 +6,13 @@ import { action } from '@ember/object';
 export default class JobsRoute extends Route {
   @service store;
 
-  queryParams = {
-    page: {
-      refreshModel: false,
-    },
-  };
-
   async model() {
     await new Promise((resolve) => later(resolve, 500));
     return this.currentModel || (await this.store.findAll('job'));
   }
 
   @action
-  willTransition() {
+  queryParamsDidChange(/* params */) {
     window.scrollTo(0, 0);
-    return true;
   }
 }

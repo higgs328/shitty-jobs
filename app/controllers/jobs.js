@@ -1,6 +1,5 @@
 import Controller from '@ember/controller';
 import { tracked } from '@glimmer/tracking';
-import { action } from '@ember/object';
 
 export default class JobsController extends Controller {
   queryParams = ['page'];
@@ -33,10 +32,5 @@ export default class JobsController extends Controller {
   get label() {
     const { min, max, model } = this;
     return `${min + 1}-${max} of ${model.length}`;
-  }
-
-  @action
-  changePage(offset) {
-    this.page += offset;
   }
 }
