@@ -32,7 +32,7 @@ export default class JobsRoute extends Route {
 
   filter(results, params) {
     if (params.salary) {
-      results = results.filter((r) => r.salaryRangeFrom > 100000);
+      results = results.filter((r) => r.salaryRangeFrom > 120000);
     }
     return results;
   }

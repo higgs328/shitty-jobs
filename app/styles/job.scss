@@ -1,7 +1,7 @@
 #job-list {
   width: 100%;
   margin: 0 auto;
-  max-width: 75rem;
+  max-width: 80rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -77,7 +77,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: normal;
-    -webkit-line-clamp: 3; /* Number of lines to show */
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
   }
 }

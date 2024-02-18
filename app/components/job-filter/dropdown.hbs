@@ -26,9 +26,7 @@
     <dropdown.Content class="border border-top-0 border-dark border-3">
       <ul class="list-group rounded-0">
         {{#each this.uniqueOptions as |option|}}
-          <li
-            class="list-group-item list-group-item-light border-0"
-          >{{option}}</li>
+          <JobFilter::DropdownOption @option={{option}} />
         {{/each}}
       </ul>
     </dropdown.Content>
