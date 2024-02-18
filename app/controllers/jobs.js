@@ -8,7 +8,7 @@ export default class JobsController extends Controller {
   page = 1;
 
   @tracked
-  size = 30;
+  size = 20;
 
   @tracked
   $q = '';
