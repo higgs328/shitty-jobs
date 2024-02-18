@@ -19,7 +19,7 @@ export default class JobSearchComponent extends Component {
     event.preventDefault();
     this.router.transitionTo({
       queryParams: {
-        $q: this.keywords,
+        q: this.keywords,
         page: 1,
       },
     });
