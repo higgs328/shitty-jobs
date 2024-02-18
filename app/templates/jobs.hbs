@@ -1,6 +1,6 @@
 {{page-title "Results"}}
 
-<JobFilter @results={{@model}}>
+<JobFilter @results={{@model}} @keywords={{this.keywords}}>
   <Pagination
     @id="pagination-section"
     @page={{this.page}}
