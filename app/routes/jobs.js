@@ -7,7 +7,10 @@ export default class JobsRoute extends Route {
   @service store;
 
   queryParams = {
-    $q: {
+    q: {
+      refreshModel: true,
+    },
+    salary: {
       refreshModel: true,
     },
   };
@@ -15,8 +18,9 @@ export default class JobsRoute extends Route {
   async model(params) {
     await new Promise((resolve) => later(resolve, 500));
     if (params) {
-      delete params.page;
-      return await this.store.query('job', params);
+      let query = { $q: params.q };
+      let results = await this.store.query('job', query);
+      return this.filter(results, params);
     }
     return this.currentModel || (await this.store.findAll('job'));
   }
@@ -24,5 +28,12 @@ export default class JobsRoute extends Route {
   @action
   queryParamsDidChange(/* params */) {
     window.scrollTo(0, 0);
+  }
+
+  filter(results, params) {
+    if (params.salary) {
+      results = results.filter((r) => r.salaryRangeFrom > 100000);
+    }
+    return results;
   }
 }
