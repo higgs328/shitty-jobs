@@ -1,13 +1,14 @@
 <section id="job-search" class="jumbotron text-center">
   <div class="container">
 
-    <form id="search-form" class="form-inline">
+    <form id="search-form" class="form-inline" {{on "submit" this.search}}>
       <div class="input-group">
         <input
           class="form-control"
           type="search"
           placeholder="Search open jobs"
           aria-label="Search"
+          {{on "input" this.input}}
         />
         <div class="input-group-append">
           <button class="btn btn-dark" type="submit">

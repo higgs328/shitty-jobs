@@ -10,14 +10,19 @@ export default class JobSearchComponent extends Component {
   keywords = '';
 
   @action
+  input(event) {
+    this.keywords = event.target.value;
+  }
+
+  @action
   search(event) {
     event.preventDefault();
-    this.router.transitionTo('jobs', {
+    this.router.transitionTo({
       queryParams: {
-        q: this.keywords,
+        $q: this.keywords,
         page: 1,
       },
     });
-    this.keywords = '';
+    this.router.refresh();
   }
 }
