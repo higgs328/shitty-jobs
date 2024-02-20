@@ -4,6 +4,7 @@ import { action } from '@ember/object';
 
 export default class JobFilterDropdownComponent extends Component {
   @tracked options = [];
+  @tracked selectedOptions = [];
 
   constructor() {
     super(...arguments);
@@ -23,6 +24,15 @@ export default class JobFilterDropdownComponent extends Component {
   @cached
   get isEmpty() {
     return Boolean(this.uniqueOptions.length === 0);
+  }
+
+  @action
+  onChange(option, event) {
+    if (event.target.checked) {
+      this.selectedOptions.push(option);
+    } else {
+      this.selectedOptions.pop(option);
+    }
   }
 
   @action
