@@ -9,7 +9,7 @@
     {{! Trigger }}
     <dropdown.Trigger class="border-bottom border-dark border-3">
       <div class="trigger-label mb-1">
-        {{#if this.isEmpty}}
+        {{#if (eq this.uniqueOptions.length 0)}}
           <FaIcon @icon="circle-notch" @spin={{true}} />
         {{else}}
           <b>{{@label}}</b>
@@ -41,7 +41,8 @@
       <ul class="list-group rounded-0">
         {{#each this.uniqueOptions as |option|}}
           <JobFilter::DropdownOption
-            @option={{option}}
+            @option={{option.value}}
+            @count={{option.count}}
             @onChange={{this.onChange}}
           />
         {{/each}}
@@ -58,7 +59,7 @@
           <small>
             <span
               class="badge rounded-circle bg-transparent text-secondary"
-            >(10)</span>
+            >({{this.selectedOptions.length}})</span>
           </small>
         </button>
       </div>

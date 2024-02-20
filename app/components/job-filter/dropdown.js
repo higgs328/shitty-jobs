@@ -1,10 +1,11 @@
 import Component from '@glimmer/component';
+import { A } from '@ember/array';
 import { cached, tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 
 export default class JobFilterDropdownComponent extends Component {
-  @tracked options = [];
-  @tracked selectedOptions = [];
+  @tracked options = A([]);
+  @tracked selectedOptions = A([]);
 
   constructor() {
     super(...arguments);
@@ -15,23 +16,27 @@ export default class JobFilterDropdownComponent extends Component {
 
   @cached
   get uniqueOptions() {
-    const unique = (value, index, self) => {
-      return self.indexOf(value) === index;
-    };
-    return this.options.filter(unique).sort();
+    return [...new Set(this.options)]
+      .map((value) => ({
+        value,
+        count: this.countOccurrences(this.options, value),
+      }))
+      .sort((a, b) => a.value.localeCompare(b.value));
   }
 
-  @cached
-  get isEmpty() {
-    return Boolean(this.uniqueOptions.length === 0);
+  countOccurrences(arr, value) {
+    return arr.reduce(
+      (count, current) => (current === value ? count + 1 : count),
+      0,
+    );
   }
 
   @action
   onChange(option, event) {
     if (event.target.checked) {
-      this.selectedOptions.push(option);
+      this.selectedOptions.addObject(option);
     } else {
-      this.selectedOptions.pop(option);
+      this.selectedOptions.removeObject(option);
     }
   }
 
