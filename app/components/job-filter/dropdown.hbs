@@ -24,11 +24,45 @@
 
     {{! Content }}
     <dropdown.Content class="border border-top-0 border-dark border-3">
+
+      {{! Filter }}
+      <div class="p-2">
+        <small>
+          <input
+            type="text"
+            class="dropdown-option-filter w-100 p-1"
+            placeholder="Search for {{@label}}"
+            aria-label="dropdown-option-filter"
+          />
+        </small>
+      </div>
+
+      {{! Options }}
       <ul class="list-group rounded-0">
         {{#each this.uniqueOptions as |option|}}
-          <JobFilter::DropdownOption @option={{option}} />
+          <JobFilter::DropdownOption
+            @option={{option}}
+            @onChange={{this.onChange}}
+          />
         {{/each}}
       </ul>
+
+      {{! Apply / Clear }}
+      <div class="btn-group w-100 sticky-bottom">
+        <button
+          type="button"
+          class="btn rounded-0 w-50 btn-primary"
+        >Apply</button>
+        <button type="button" class="btn rounded-0 w-50 btn-dark">
+          Clear
+          <small>
+            <span
+              class="badge rounded-circle bg-transparent text-secondary"
+            >(10)</span>
+          </small>
+        </button>
+      </div>
+
     </dropdown.Content>
 
   </BasicDropdown>
