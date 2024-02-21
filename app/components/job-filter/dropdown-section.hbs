@@ -3,13 +3,19 @@
   <div class="row justify-content-center">
 
     {{! agency }}
-    <JobFilter::Dropdown @results={{@results}} @key="agency" @label="Agency" />
+    <JobFilter::Dropdown
+      @results={{@results}}
+      @key="agency"
+      @label="Agency"
+      @qp="agency"
+    />
 
     {{! civilServiceTitle }}
     <JobFilter::Dropdown
       @results={{@results}}
       @key="civilServiceTitle"
       @label="Title"
+      @qp="title"
     />
 
     {{! titleClassification }}
@@ -17,6 +23,7 @@
       @results={{@results}}
       @key="titleClassification"
       @label="Class"
+      @qp="class"
     />
 
     {{! salaryRangeTo }}
@@ -24,6 +31,7 @@
       @results={{@results}}
       @key="salaryRangeTo"
       @label="Salary"
+      @qp="salary"
     />
 
   </div>

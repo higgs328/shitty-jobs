@@ -10,6 +10,15 @@ export default class JobsRoute extends Route {
     q: {
       refreshModel: true,
     },
+    agency: {
+      refreshModel: true,
+    },
+    class: {
+      refreshModel: true,
+    },
+    title: {
+      refreshModel: true,
+    },
     salary: {
       refreshModel: true,
     },
@@ -25,15 +34,24 @@ export default class JobsRoute extends Route {
     return this.currentModel || (await this.store.findAll('job'));
   }
 
+  filter(results, params) {
+    if (params.agency) {
+      console.log(params.agency);
+    }
+    if (params.class) {
+      console.log(params.class);
+    }
+    if (params.title) {
+      console.log(params.title);
+    }
+    if (params.salary) {
+      console.log(params.salary);
+    }
+    return results;
+  }
+
   @action
   queryParamsDidChange(/* params */) {
     window.scrollTo(0, 0);
-  }
-
-  filter(results, params) {
-    if (params.salary) {
-      results = results.filter((r) => r.salaryRangeFrom > 120000);
-    }
-    return results;
   }
 }
