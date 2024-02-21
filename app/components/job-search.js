@@ -23,6 +23,5 @@ export default class JobSearchComponent extends Component {
         page: 1,
       },
     });
-    this.router.refresh();
   }
 }

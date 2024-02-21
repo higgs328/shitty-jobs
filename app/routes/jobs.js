@@ -51,7 +51,7 @@ export default class JobsRoute extends Route {
   }
 
   @action
-  queryParamsDidChange(/* params */) {
+  queryParamsDidChange() {
     window.scrollTo(0, 0);
   }
 }

@@ -74,7 +74,6 @@ export default class JobFilterDropdownComponent extends Component {
     this.router.transitionTo({
       queryParams,
     });
-    this.router.refresh();
   }
 
   @action
@@ -86,6 +85,5 @@ export default class JobFilterDropdownComponent extends Component {
     this.router.transitionTo({
       queryParams,
     });
-    this.router.refresh();
   }
 }
