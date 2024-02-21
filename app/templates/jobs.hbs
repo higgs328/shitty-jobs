@@ -1,8 +1,9 @@
 {{page-title "Results"}}
 
-<JobFilter @results={{@model}} @params={{this.params}}>
+<JobFilter @loading={{false}} @results={{@model}} @params={{this.params}}>
   <Pagination
     @id="pagination-section"
+    @loading={{false}}
     @page={{this.page}}
     @pages={{this.pages}}
     @label={{this.label}}

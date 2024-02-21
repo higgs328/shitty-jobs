@@ -4,6 +4,7 @@
 
     {{! agency }}
     <JobFilter::Dropdown
+      @loading={{@loading}}
       @results={{@results}}
       @params={{@params}}
       @param="agency"
@@ -13,6 +14,7 @@
 
     {{! civilServiceTitle }}
     <JobFilter::Dropdown
+      @loading={{@loading}}
       @results={{@results}}
       @params={{@params}}
       @param="title"
@@ -22,6 +24,7 @@
 
     {{! titleClassification }}
     <JobFilter::Dropdown
+      @loading={{@loading}}
       @results={{@results}}
       @params={{@params}}
       @param="tclass"
@@ -31,6 +34,7 @@
 
     {{! salaryRangeTo }}
     <JobFilter::Dropdown
+      @loading={{@loading}}
       @results={{@results}}
       @params={{@params}}
       @param="salary"
