@@ -5,33 +5,37 @@
     {{! agency }}
     <JobFilter::Dropdown
       @results={{@results}}
-      @key="agency"
+      @params={{@params}}
+      @param="agency"
       @label="Agency"
-      @qp="agency"
+      @key="agency"
     />
 
     {{! civilServiceTitle }}
     <JobFilter::Dropdown
       @results={{@results}}
-      @key="civilServiceTitle"
+      @params={{@params}}
+      @param="title"
       @label="Title"
-      @qp="title"
+      @key="civilServiceTitle"
     />
 
     {{! titleClassification }}
     <JobFilter::Dropdown
       @results={{@results}}
-      @key="titleClassification"
+      @params={{@params}}
+      @param="tclass"
       @label="Class"
-      @qp="class"
+      @key="titleClassification"
     />
 
     {{! salaryRangeTo }}
     <JobFilter::Dropdown
       @results={{@results}}
-      @key="salaryRangeTo"
+      @params={{@params}}
+      @param="salary"
       @label="Salary"
-      @qp="salary"
+      @key="salaryRangeTo"
     />
 
   </div>

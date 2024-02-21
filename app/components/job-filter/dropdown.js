@@ -13,7 +13,10 @@ export default class JobFilterDropdownComponent extends Component {
   constructor() {
     super(...arguments);
     if (this.args.results) {
-      this.options = this.args.results.map((r) => r[this.args.key]);
+      this.options = A(this.args.results.map((r) => r[this.args.key]));
+    }
+    if (this.args.params && this.args.params[this.args.param]) {
+      this.selectedOptions = A(this.args.params[this.args.param].split(','));
     }
   }
 
@@ -67,7 +70,7 @@ export default class JobFilterDropdownComponent extends Component {
     const queryParams = {
       page: 1,
     };
-    queryParams[this.args.qp] = this.selectedOptions;
+    queryParams[this.args.param] = this.selectedOptions;
     this.router.transitionTo({
       queryParams,
     });
@@ -79,7 +82,7 @@ export default class JobFilterDropdownComponent extends Component {
     const queryParams = {
       page: 1,
     };
-    queryParams[this.args.qp] = undefined;
+    queryParams[this.args.param] = undefined;
     this.router.transitionTo({
       queryParams,
     });

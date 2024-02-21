@@ -2,7 +2,7 @@ import Controller from '@ember/controller';
 import { tracked } from '@glimmer/tracking';
 
 export default class JobsController extends Controller {
-  queryParams = ['page', '$q'];
+  queryParams = ['q', 'page', 'agency', 'title', 'tclass', 'salary'];
 
   @tracked
   page = 1;
@@ -10,11 +10,16 @@ export default class JobsController extends Controller {
   @tracked
   size = 20;
 
-  @tracked
-  $q = '';
-
-  get keywords() {
-    return this.$q;
+  get params() {
+    const { q, page, agency, title, tclass, salary } = this;
+    return {
+      q,
+      page,
+      agency,
+      title,
+      tclass,
+      salary,
+    };
   }
 
   get pages() {
