@@ -13,6 +13,5 @@ export default class JobFilterKeywordComponent extends Component {
     this.router.transitionTo({
       queryParams,
     });
-    this.router.refresh();
   }
 }
