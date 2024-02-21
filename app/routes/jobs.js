@@ -18,10 +18,17 @@ export default class JobsRoute extends Route {
 
   filter(results, params) {
     if (params.agency) {
+      results = results.filter((r) => params.agency.includes(r.agency));
     }
     if (params.tclass) {
+      results = results.filter((r) =>
+        params.tclass.includes(r.titleClassification),
+      );
     }
     if (params.title) {
+      results = results.filter((r) =>
+        params.title.includes(r.civilServiceTitle),
+      );
     }
     if (params.salary) {
     }
@@ -29,11 +36,12 @@ export default class JobsRoute extends Route {
   }
 
   @action
-  queryParamsDidChange(changed) {
+  queryParamsDidChange(changed, totalPresent, removed) {
     window.scrollTo(0, 0);
-    if (Object.keys(changed).length === 1 && changed.page) {
-      return true;
-    } else {
+    if (
+      Object.keys(changed).filter((k) => k !== 'page').length ||
+      Object.keys(removed).filter((k) => k !== 'page').length
+    ) {
       this.refresh();
     }
   }
