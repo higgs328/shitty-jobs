@@ -4,10 +4,10 @@
   <JobFilter::ResultSection @results={{@results}} />
 
   {{! keywords }}
-  <JobFilter::KeywordSection @keywords={{@keywords}} />
+  <JobFilter::KeywordSection @keywords={{@params.q}} />
 
   {{! filters }}
-  <JobFilter::DropdownSection @results={{@results}} />
+  <JobFilter::DropdownSection @results={{@results}} @params={{@params}} />
 
   {{yield}}
 

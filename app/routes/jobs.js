@@ -13,7 +13,7 @@ export default class JobsRoute extends Route {
     agency: {
       refreshModel: true,
     },
-    class: {
+    tclass: {
       refreshModel: true,
     },
     title: {
@@ -38,8 +38,8 @@ export default class JobsRoute extends Route {
     if (params.agency) {
       console.log(params.agency);
     }
-    if (params.class) {
-      console.log(params.class);
+    if (params.tclass) {
+      console.log(params.tclass);
     }
     if (params.title) {
       console.log(params.title);
