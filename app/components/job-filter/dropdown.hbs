@@ -54,8 +54,13 @@
         <button
           type="button"
           class="btn rounded-0 w-50 btn-primary"
+          {{on "click" this.apply}}
         >Apply</button>
-        <button type="button" class="btn rounded-0 w-50 btn-dark">
+        <button
+          type="button"
+          class="btn rounded-0 w-50 btn-dark"
+          {{on "click" this.clear}}
+        >
           Clear
           <small>
             <span

@@ -1,9 +1,12 @@
 import Component from '@glimmer/component';
 import { A } from '@ember/array';
-import { cached, tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
+import { cached, tracked } from '@glimmer/tracking';
+import { inject as service } from '@ember/service';
 
 export default class JobFilterDropdownComponent extends Component {
+  @service router;
+
   @tracked options = A([]);
   @tracked selectedOptions = A([]);
 
@@ -57,5 +60,29 @@ export default class JobFilterDropdownComponent extends Component {
         }
       }
     }, 500);
+  }
+
+  @action
+  apply() {
+    const queryParams = {
+      page: 1,
+    };
+    queryParams[this.args.qp] = this.selectedOptions;
+    this.router.transitionTo({
+      queryParams,
+    });
+    this.router.refresh();
+  }
+
+  @action
+  clear() {
+    const queryParams = {
+      page: 1,
+    };
+    queryParams[this.args.qp] = undefined;
+    this.router.transitionTo({
+      queryParams,
+    });
+    this.router.refresh();
   }
 }
