@@ -42,6 +42,7 @@
         {{#each this.uniqueOptions as |option|}}
           <JobFilter::DropdownOption
             @option={{option.value}}
+            @options={{this.selectedOptions}}
             @count={{option.count}}
             @onChange={{this.onChange}}
           />
