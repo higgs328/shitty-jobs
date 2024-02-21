@@ -65,6 +65,39 @@ export default class JobModel extends Model {
     return '';
   }
 
+  get salaryGroup() {
+    if (this.salaryFrequency === 'Annual') {
+      if (this.salaryRangeTo > 200000) {
+        return 200000;
+      }
+      if (this.salaryRangeTo > 180000) {
+        return 180000;
+      }
+      if (this.salaryRangeTo > 160000) {
+        return 160000;
+      }
+      if (this.salaryRangeTo > 140000) {
+        return 140000;
+      }
+      if (this.salaryRangeTo > 120000) {
+        return 120000;
+      }
+      if (this.salaryRangeTo > 100000) {
+        return 100000;
+      }
+      if (this.salaryRangeTo > 80000) {
+        return 80000;
+      }
+      if (this.salaryRangeTo > 60000) {
+        return 60000;
+      }
+      if (this.salaryRangeTo > 40000) {
+        return 40000;
+      }
+    }
+    return 0;
+  }
+
   get fullTimePartTimeLabel() {
     if (this.fullTimePartTimeIndicator === 'F') {
       return 'full-time';

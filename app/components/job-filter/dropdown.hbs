@@ -39,7 +39,7 @@
 
       {{! Options }}
       <ul class="list-group rounded-0">
-        {{#each this.uniqueOptions as |option|}}
+        {{#each this.optionsSorted as |option|}}
           <JobFilter::DropdownOption
             @option={{option.value}}
             @options={{this.selectedOptions}}

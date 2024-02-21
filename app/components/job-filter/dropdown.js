@@ -6,7 +6,6 @@ import { inject as service } from '@ember/service';
 
 export default class JobFilterDropdownComponent extends Component {
   @service router;
-
   @tracked options = A([]);
   @tracked selectedOptions = A([]);
 
@@ -21,20 +20,32 @@ export default class JobFilterDropdownComponent extends Component {
   }
 
   @cached
-  get uniqueOptions() {
-    return [...new Set(this.options)]
-      .map((value) => ({
-        value,
-        count: this.countOccurrences(this.options, value),
-      }))
-      .sort((a, b) => a.value.localeCompare(b.value));
+  get optionsUnique() {
+    return A(this.options).uniq();
   }
 
-  countOccurrences(arr, value) {
-    return arr.reduce(
-      (count, current) => (current === value ? count + 1 : count),
-      0,
-    );
+  @cached
+  get optionsGrouped() {
+    const count = function (arr, value) {
+      return arr.reduce(
+        (count, current) => (current === value ? count + 1 : count),
+        0,
+      );
+    };
+    return this.optionsUnique.map((value) => ({
+      value,
+      count: count(this.options, value),
+    }));
+  }
+
+  @cached
+  get optionsSorted() {
+    return this.optionsGrouped.sort((a, b) => {
+      if (isNaN(a.value)) {
+        return a.value.localeCompare(b.value);
+      }
+      return b.value - a.value;
+    });
   }
 
   @action
