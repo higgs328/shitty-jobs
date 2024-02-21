@@ -1,13 +1,17 @@
 <div id="job-filter" class="mb-4">
 
   {{! results }}
-  <JobFilter::ResultSection @results={{@results}} />
+  <JobFilter::ResultSection @loading={{@loading}} @results={{@results}} />
 
   {{! keywords }}
-  <JobFilter::KeywordSection @keywords={{@params.q}} />
+  <JobFilter::KeywordSection @loading={{@loading}} @keywords={{@params.q}} />
 
   {{! filters }}
-  <JobFilter::DropdownSection @results={{@results}} @params={{@params}} />
+  <JobFilter::DropdownSection
+    @loading={{@loading}}
+    @results={{@results}}
+    @params={{@params}}
+  />
 
   {{yield}}
 

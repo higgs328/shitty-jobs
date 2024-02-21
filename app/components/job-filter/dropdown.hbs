@@ -9,7 +9,7 @@
     {{! Trigger }}
     <dropdown.Trigger class="border-bottom border-dark border-3">
       <div class="trigger-label mb-1">
-        {{#if (eq this.uniqueOptions.length 0)}}
+        {{#if @loading}}
           <FaIcon @icon="circle-notch" @spin={{true}} />
         {{else}}
           <b>{{@label}}</b>

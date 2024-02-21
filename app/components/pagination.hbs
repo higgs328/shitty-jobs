@@ -13,7 +13,12 @@
     </LinkTo>
 
     {{! Count }}
-    {{#if @label}}
+    {{#if @loading}}
+      <div class="btn btn-outline-dark border-2">
+        <FaIcon @icon="circle-notch" @spin={{true}} />
+      </div>
+
+    {{else}}
       <LinkTo
         class="btn btn-outline-dark border-2"
         @disabled={{true}}
@@ -21,11 +26,6 @@
       >
         {{@label}}
       </LinkTo>
-
-    {{else}}
-      <div class="btn btn-outline-dark border-2">
-        <FaIcon @icon="circle-notch" @spin={{true}} />
-      </div>
     {{/if}}
 
     {{! Next }}

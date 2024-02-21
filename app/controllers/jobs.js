@@ -43,6 +43,6 @@ export default class JobsController extends Controller {
 
   get label() {
     const { min, max, model } = this;
-    return `${min + 1}-${max} of ${model.length}`;
+    return model.length ? `${min + 1}-${max} of ${model.length}` : 0;
   }
 }
