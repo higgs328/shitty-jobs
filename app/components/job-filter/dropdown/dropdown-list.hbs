@@ -27,12 +27,12 @@
   <button
     type="button"
     class="btn rounded-0 w-50 btn-primary"
-    {{on "click" this.apply}}
+    {{on "click" (fn @apply this.selectedOptions)}}
   >Apply</button>
   <button
     type="button"
     class="btn rounded-0 w-50 btn-dark"
-    {{on "click" this.clear}}
+    {{on "click" @clear}}
   >
     Clear
     <small>

@@ -31,6 +31,8 @@
           @param={{@param}}
           @label={{@label}}
           @key={{@key}}
+          @apply={{this.apply}}
+          @clear={{this.clear}}
         />
       {{/if}}
       {{#if (eq @type "range")}}
@@ -40,6 +42,8 @@
           @param={{@param}}
           @label={{@label}}
           @keys={{@keys}}
+          @apply={{this.apply}}
+          @clear={{this.clear}}
         />
       {{/if}}
     </dropdown.Content>
