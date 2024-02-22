@@ -24,52 +24,24 @@
 
     {{! Content }}
     <dropdown.Content class="border border-top-0 border-dark border-3">
-
-      {{! Filter }}
-      <div class="p-2">
-        <small>
-          <input
-            type="text"
-            class="dropdown-option-filter w-100 p-1"
-            placeholder="Search for {{@label}}"
-            aria-label="dropdown-option-filter"
-          />
-        </small>
-      </div>
-
-      {{! Options }}
-      <ul class="list-group rounded-0">
-        {{#each this.optionsSorted as |option|}}
-          <JobFilter::DropdownOption
-            @option={{option.value}}
-            @options={{this.selectedOptions}}
-            @count={{option.count}}
-            @onChange={{this.onChange}}
-          />
-        {{/each}}
-      </ul>
-
-      {{! Apply / Clear }}
-      <div class="btn-group w-100 sticky-bottom">
-        <button
-          type="button"
-          class="btn rounded-0 w-50 btn-primary"
-          {{on "click" this.apply}}
-        >Apply</button>
-        <button
-          type="button"
-          class="btn rounded-0 w-50 btn-dark"
-          {{on "click" this.clear}}
-        >
-          Clear
-          <small>
-            <span
-              class="badge rounded-circle bg-transparent text-secondary"
-            >({{this.selectedOptions.length}})</span>
-          </small>
-        </button>
-      </div>
-
+      {{#if (eq @type "list")}}
+        <JobFilter::Dropdown::DropdownList
+          @results={{@results}}
+          @params={{@params}}
+          @param={{@param}}
+          @label={{@label}}
+          @key={{@key}}
+        />
+      {{/if}}
+      {{#if (eq @type "range")}}
+        <JobFilter::Dropdown::DropdownRange
+          @results={{@results}}
+          @params={{@params}}
+          @param={{@param}}
+          @label={{@label}}
+          @keys={{@keys}}
+        />
+      {{/if}}
     </dropdown.Content>
 
   </BasicDropdown>

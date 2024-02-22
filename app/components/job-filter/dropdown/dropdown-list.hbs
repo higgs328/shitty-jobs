@@ -1,0 +1,44 @@
+{{! Filter }}
+<div class="p-2">
+  <small>
+    <Input
+      @type="text"
+      class="dropdown-option-filter w-100 p-1"
+      placeholder="Search for {{@label}}"
+      aria-label="dropdown-option-filter"
+    />
+  </small>
+</div>
+
+{{! Options }}
+<ul class="list-group rounded-0">
+  {{#each this.optionsSorted as |option|}}
+    <JobFilter::Dropdown::DropdownOption
+      @option={{option.value}}
+      @options={{this.selectedOptions}}
+      @count={{option.count}}
+      @onChange={{this.onChange}}
+    />
+  {{/each}}
+</ul>
+
+{{! Apply / Clear }}
+<div class="btn-group w-100 sticky-bottom">
+  <button
+    type="button"
+    class="btn rounded-0 w-50 btn-primary"
+    {{on "click" this.apply}}
+  >Apply</button>
+  <button
+    type="button"
+    class="btn rounded-0 w-50 btn-dark"
+    {{on "click" this.clear}}
+  >
+    Clear
+    <small>
+      <span
+        class="badge rounded-circle bg-transparent text-secondary"
+      >({{this.selectedOptions.length}})</span>
+    </small>
+  </button>
+</div>

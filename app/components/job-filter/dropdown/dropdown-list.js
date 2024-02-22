@@ -4,7 +4,7 @@ import { action } from '@ember/object';
 import { cached, tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 
-export default class JobFilterDropdownComponent extends Component {
+export default class JobFilterDropdownDropdownListComponent extends Component {
   @service router;
   @tracked options = A([]);
   @tracked selectedOptions = A([]);
