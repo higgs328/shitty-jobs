@@ -1,22 +1,44 @@
-<JobFilter::Dropdown::DropdownContent
-  @inputValue={{currency this.value}}
-  @inputDisabled={{true}}
-  @dropdownSelection={{this.value}}
-  @buttonApplyClicked={{@apply}}
-  @buttonClearClicked={{@clear}}
->
+{{! Filter }}
+<div class="p-2">
+  <small>
+    <Input
+      @type="text"
+      @value={{this.value}}
+      class="dropdown-option-filter w-100 p-1 text-center"
+      aria-label="dropdown-option-filter"
+      disabled={{true}}
+    />
+  </small>
+</div>
+
+{{! Options }}
+<ul class="list-group rounded-0">
   <div class="dropdown-option">
     <li class="list-group-item list-group-item-light">
       <Input
         @type="range"
         @value={{this.value}}
-        min={{@min}}
-        max={{@max}}
-        step={{@step}}
-        class="w-100"
+        min={{0}}
+        max={{300000}}
+        step={{10000}}
         aria-label="salary-range"
       />
     </li>
   </div>
+</ul>
 
-</JobFilter::Dropdown::DropdownContent>
+{{! Apply / Clear }}
+<div class="btn-group w-100 sticky-bottom">
+  <button
+    type="button"
+    class="btn rounded-0 w-50 btn-primary"
+    {{on "click" this.apply}}
+  >Apply</button>
+  <button
+    type="button"
+    class="btn rounded-0 w-50 btn-dark"
+    {{on "click" this.clear}}
+  >
+    Clear
+  </button>
+</div>

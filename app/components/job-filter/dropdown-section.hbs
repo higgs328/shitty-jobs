@@ -4,6 +4,7 @@
 
     {{! agency }}
     <JobFilter::Dropdown
+      @type="list"
       @loading={{@loading}}
       @results={{@results}}
       @params={{@params}}
@@ -14,6 +15,7 @@
 
     {{! civilServiceTitle }}
     <JobFilter::Dropdown
+      @type="list"
       @loading={{@loading}}
       @results={{@results}}
       @params={{@params}}
@@ -24,6 +26,7 @@
 
     {{! titleClassification }}
     <JobFilter::Dropdown
+      @type="list"
       @loading={{@loading}}
       @results={{@results}}
       @params={{@params}}
@@ -34,12 +37,13 @@
 
     {{! salaryRangeTo }}
     <JobFilter::Dropdown
+      @type="range"
       @loading={{@loading}}
       @results={{@results}}
       @params={{@params}}
       @param="salary"
       @label="Salary"
-      @key="salaryGroup"
+      @keys={{array "salaryRangeFrom" "salaryRangeTo"}}
     />
 
   </div>
