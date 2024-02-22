@@ -31,6 +31,11 @@ export default class JobsRoute extends Route {
       );
     }
     if (params.salary) {
+      results = results.filter(
+        (r) =>
+          parseInt(params.salary) >= parseInt(r.salaryRangeFrom) &&
+          parseInt(params.salary) <= parseInt(r.salaryRangeTo),
+      );
     }
     return results;
   }
