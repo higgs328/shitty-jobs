@@ -8,7 +8,7 @@ export default class JobsController extends Controller {
   page = 1;
 
   @tracked
-  salary = 100000;
+  salary = 0;
 
   @tracked
   size = 20;

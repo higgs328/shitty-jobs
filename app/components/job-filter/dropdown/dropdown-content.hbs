@@ -4,23 +4,21 @@
     <Input
       @type="text"
       @value={{@inputValue}}
-      autocomplete="off"
-      aria-label="dropdown-option-filter"
-      class="dropdown-option-filter w-100 p-1 text-center"
-      placeholder={{@inputPlaceholder}}
       disabled={{@inputDisabled}}
-      {{on "input" this.setFilter}}
+      placeholder={{@inputPlaceholder}}
+      class="dropdown-option-filter w-100 p-1 text-center"
+      aria-label="dropdown-option-filter"
     />
   </small>
 </div>
 
 {{! Content }}
 <ul class="list-group rounded-0">
-  {{yield this.filter}}
+  {{yield}}
 </ul>
 
 {{! Buttons }}
-<div class="btn-group bg-secondary w-100 sticky-bottom">
+<div class="btn-group w-100 sticky-bottom">
   <button
     type="button"
     class="btn rounded-0 w-50 btn-primary"
@@ -29,7 +27,6 @@
   <button
     type="button"
     class="btn rounded-0 w-50 btn-dark"
-    disabled={{@buttonClearDisabled}}
     {{on "click" @buttonClearClicked}}
   >
     Clear

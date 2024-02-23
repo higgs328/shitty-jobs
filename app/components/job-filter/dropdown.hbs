@@ -37,11 +37,11 @@
       {{/if}}
       {{#if (eq @type "range")}}
         <JobFilter::Dropdown::DropdownRange
-          @results={{@results}}
           @params={{@params}}
           @param={{@param}}
-          @label={{@label}}
-          @keys={{@keys}}
+          @min={{0}}
+          @max={{300000}}
+          @step={{10000}}
           @apply={{this.apply}}
           @clear={{this.clear}}
         />
