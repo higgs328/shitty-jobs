@@ -4,8 +4,9 @@
     class="card flex-col-1 border-primary shadow-sm
       {{if this.isFlipped 'flipped'}}"
   >
-    <div class="ribbon">
-      New
+    <div class="ribbon ribbon-{{@job.postingDateCategory}}">
+      {{console-log @job}}
+      {{@job.postingDateCategory}}
     </div>
     {{! Front of the card }}
     <div class="face front flex-col-1">
