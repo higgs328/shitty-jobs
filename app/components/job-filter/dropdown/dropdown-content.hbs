@@ -4,17 +4,19 @@
     <Input
       @type="text"
       @value={{@inputValue}}
-      disabled={{@inputDisabled}}
-      placeholder={{@inputPlaceholder}}
-      class="dropdown-option-filter w-100 p-1 text-center"
+      autocomplete="off"
       aria-label="dropdown-option-filter"
+      class="dropdown-option-filter w-100 p-1 text-center"
+      placeholder={{@inputPlaceholder}}
+      disabled={{@inputDisabled}}
+      {{on "input" this.setFilter}}
     />
   </small>
 </div>
 
 {{! Content }}
 <ul class="list-group rounded-0">
-  {{yield}}
+  {{yield this.filter}}
 </ul>
 
 {{! Buttons }}

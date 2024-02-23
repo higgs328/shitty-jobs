@@ -6,13 +6,16 @@
   @buttonApplyClicked={{@apply}}
   @buttonClearClicked={{@clear}}
   @buttonClearDisabled={{not (has-key @params @param)}}
+  as |filter|
 >
   {{#each this.optionsSorted as |option|}}
-    <JobFilter::Dropdown::DropdownOption
-      @option={{option.value}}
-      @options={{this.selectedOptions}}
-      @count={{option.count}}
-      @onChange={{this.onChange}}
-    />
+    {{#if (search option.value filter)}}
+      <JobFilter::Dropdown::DropdownOption
+        @option={{option.value}}
+        @options={{this.selectedOptions}}
+        @count={{option.count}}
+        @onChange={{this.onChange}}
+      />
+    {{/if}}
   {{/each}}
 </JobFilter::Dropdown::DropdownContent>
