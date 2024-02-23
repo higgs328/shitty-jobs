@@ -1,7 +1,13 @@
 {{page-title "Loading"}}
 
-<JobFilter @loading={{true}}>
-  <Pagination @loading={{true}} />
+<JobFilter @loading={{true}} @results={{undefined}} @params={{undefined}}>
+  <Pagination
+    @id="pagination-section"
+    @loading={{true}}
+    @page={{undefined}}
+    @pages={{undefined}}
+    @label={{undefined}}
+  />
 </JobFilter>
 
 <div id="job-list" class="mb-4">
@@ -10,4 +16,9 @@
   {{/each}}
 </div>
 
-<Pagination />
+<Pagination
+  @id="pagination-footer"
+  @page={{undefined}}
+  @pages={{undefined}}
+  @label={{undefined}}
+/>
