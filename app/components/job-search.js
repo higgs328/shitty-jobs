@@ -10,11 +10,6 @@ export default class JobSearchComponent extends Component {
   keywords = '';
 
   @action
-  input(event) {
-    this.keywords = event.target.value;
-  }
-
-  @action
   search(event) {
     event.preventDefault();
     this.router.transitionTo({
@@ -23,5 +18,6 @@ export default class JobSearchComponent extends Component {
         page: 1,
       },
     });
+    this.keywords = '';
   }
 }
