@@ -12,6 +12,11 @@
         {{#if @loading}}
           <FaIcon @icon="circle-notch" @spin={{true}} />
         {{else}}
+          {{#if (has-key @params @param)}}
+            <small class="">
+              <FaIcon @icon="filter" class="text-primary" />
+            </small>
+          {{/if}}
           <b>{{@label}}</b>
           <FaIcon
             @icon="angle-down"
