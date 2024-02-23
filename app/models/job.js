@@ -105,14 +105,28 @@ export default class JobModel extends Model {
     return Math.floor(tDiff / (1000 * 60 * 60 * 24));
   }
 
+  get postingPDateAge() {
+    const pDate = new Date(this.processDate);
+    const cDate = new Date();
+    const tDiff = pDate - cDate;
+    return Math.floor(tDiff / (1000 * 60 * 60 * 24));
+  }
+
   get postingAgeLabel() {
-    const cDate = this.postingCDateAge >= 60 ? '60+' : this.postingCDateAge;
-    const uDate = this.postingUDateAge >= 60 ? '60+' : this.postingUDateAge;
+    const cDate = this.postingCDateAge;
+    const uDate = this.postingUDateAge;
     if (cDate !== uDate) {
       return `posted ${cDate} days ago. updated ${uDate} days ago.`;
     } else {
       return `posted ${cDate} days ago.`;
     }
+  }
+
+  get postingDateCategory() {
+    if (this.postingCDateAge <= 30) {
+      return 'new';
+    }
+    return undefined;
   }
 
   get properties() {

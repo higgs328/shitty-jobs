@@ -82,7 +82,8 @@
   }
 
   .ribbon {
-    font-size: 28px;
+    display: none;
+    font-size: 20px;
     font-weight: bold;
     color: #fff;
     position: absolute;
@@ -104,6 +105,10 @@
     );
     transform: translate(calc((cos(45deg) - 1) * 100%), -100%) rotate(-45deg);
     transform-origin: 100% 100%;
-    background-color: #f07818;
+  }
+
+  .ribbon-new {
+    background-color: var(--bs-success);
+    display: block;
   }
 }
