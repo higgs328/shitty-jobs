@@ -18,7 +18,7 @@
 </ul>
 
 {{! Buttons }}
-<div class="btn-group w-100 sticky-bottom">
+<div class="btn-group bg-secondary w-100 sticky-bottom">
   <button
     type="button"
     class="btn rounded-0 w-50 btn-primary"
@@ -27,6 +27,7 @@
   <button
     type="button"
     class="btn rounded-0 w-50 btn-dark"
+    disabled={{@buttonClearDisabled}}
     {{on "click" @buttonClearClicked}}
   >
     Clear

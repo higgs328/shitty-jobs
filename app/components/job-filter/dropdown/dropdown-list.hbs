@@ -5,6 +5,7 @@
   @dropdownSelection={{this.selectedOptions}}
   @buttonApplyClicked={{@apply}}
   @buttonClearClicked={{@clear}}
+  @buttonClearDisabled={{not (has-key @params @param)}}
 >
   {{#each this.optionsSorted as |option|}}
     <JobFilter::Dropdown::DropdownOption
