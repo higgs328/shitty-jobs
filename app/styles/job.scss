@@ -80,4 +80,30 @@
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
   }
+
+  .ribbon {
+    font-size: 28px;
+    font-weight: bold;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    line-height: 1.8;
+    padding-inline: 1lh;
+    padding-bottom: 0.5em;
+    border-image: conic-gradient(#0008 0 0) 51% / 0.5em;
+    clip-path: polygon(
+      100% calc(100% - 0.5em),
+      100% 100%,
+      calc(100% - 0.5em) calc(100% - 0.5em),
+      0.5em calc(100% - 0.5em),
+      0 100%,
+      0 calc(100% - 0.5em),
+      999px calc(100% - 0.5em - 999px),
+      calc(100% - 999px) calc(100% - 0.5em - 999px)
+    );
+    transform: translate(calc((cos(45deg) - 1) * 100%), -100%) rotate(-45deg);
+    transform-origin: 100% 100%;
+    background-color: #f07818;
+  }
 }
