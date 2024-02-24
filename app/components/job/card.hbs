@@ -16,8 +16,16 @@
         {{! Toolbar }}
         <nav class="navbar justify-content-end" aria-label="nav-front">
           <div class="btn-group">
-            <button class="btn btn-light" type="button">
-              <FaIcon @prefix="far" @icon="star" class="fa-lg" />
+            <button
+              class="btn btn-light"
+              type="button"
+              {{on "click" this.toggleFavorite}}
+            >
+              {{#if @job.favorite.isFavorited}}
+                <FaIcon @prefix="fas" @icon="star" class="fa-lg text-warning" />
+              {{else}}
+                <FaIcon @prefix="far" @icon="star" class="fa-lg" />
+              {{/if}}
             </button>
             <button
               class="btn btn-light"

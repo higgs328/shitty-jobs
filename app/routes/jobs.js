@@ -1,5 +1,4 @@
 import Route from '@ember/routing/route';
-import { later } from '@ember/runloop';
 import { service } from '@ember/service';
 import { action } from '@ember/object';
 
@@ -7,37 +6,41 @@ export default class JobsRoute extends Route {
   @service store;
 
   async model(params) {
-    await new Promise((resolve) => later(resolve, 500));
-    if (params) {
-      let query = { $q: params.q };
-      let results = await this.store.query('job', query);
-      return this.filter(results, params);
-    }
-    return this.currentModel || (await this.store.findAll('job'));
+    // Get Jobs
+    let records = await this.store.query('job', { $q: params.q });
+    // Attach Favorites
+    records = await Promise.all(
+      records.map(async (record) => {
+        record.favorite = await this.store.findRecord('favorite', record.id);
+        return record;
+      }),
+    );
+    // Apply Filters
+    return this.filter(records, params);
   }
 
-  filter(results, params) {
+  filter(records, params) {
     if (params.agency) {
-      results = results.filter((r) => params.agency.includes(r.agency));
+      records = records.filter((r) => params.agency.includes(r.agency));
     }
     if (params.tclass) {
-      results = results.filter((r) =>
+      records = records.filter((r) =>
         params.tclass.includes(r.titleClassification),
       );
     }
     if (params.title) {
-      results = results.filter((r) =>
+      records = records.filter((r) =>
         params.title.includes(r.civilServiceTitle),
       );
     }
     if (params.salary) {
-      results = results.filter(
+      records = records.filter(
         (r) =>
           parseInt(params.salary) >= parseInt(r.salaryRangeFrom) &&
           parseInt(params.salary) <= parseInt(r.salaryRangeTo),
       );
     }
-    return results;
+    return records;
   }
 
   @action
