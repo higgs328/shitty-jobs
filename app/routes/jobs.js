@@ -8,6 +8,7 @@ export default class JobsRoute extends Route {
   async model(params) {
     // Get Jobs
     let records = await this.store.query('job', { $q: params.q });
+
     // Attach Favorites
     records = await Promise.all(
       records.map(async (record) => {
@@ -15,6 +16,7 @@ export default class JobsRoute extends Route {
         return record;
       }),
     );
+
     // Apply Filters
     return this.filter(records, params);
   }
