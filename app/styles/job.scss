@@ -81,7 +81,7 @@
     -webkit-box-orient: vertical;
   }
 
-  .ribbon {
+  .card .ribbon {
     display: none;
     font-size: 20px;
     font-weight: bold;
@@ -107,8 +107,12 @@
     transform-origin: 100% 100%;
   }
 
-  .ribbon-new {
+  .card .ribbon-new {
     background-color: var(--bs-success);
     display: block;
+  }
+
+  .card.flipped .ribbon-new {
+    display: none;
   }
 }
