@@ -2,9 +2,9 @@
   <div class="container">
     <div class="navbar row">
       <div class="col-l col-lg-3 text-left">
-        <a class="logo-container" href="/">
+        <LinkTo @route="jobs" class="logo-container">
           <img src="/assets/images/jobs_logo.png" alt="shitty-jobs" />
-        </a>
+        </LinkTo>
       </div>
       <div class="col-m col-lg-6 text-center">
         <span class="sub-heading text-center">
@@ -26,9 +26,20 @@
             </li>
             <li class="nav-item text-center">
               <div class="nav-link">
-                <a class="" href="/">
-                  <img src="/assets/images/star.png" alt="favorite" />
-                </a>
+                <LinkTo id="link-to-favorites" @route="favorites">
+                  <FaIcon
+                    id="star-1"
+                    @prefix="far"
+                    @icon="star"
+                    class="fs-5 text-dark"
+                  />
+                  <FaIcon
+                    id="star-2"
+                    @prefix="fas"
+                    @icon="star"
+                    class="fs-5 text-warning"
+                  />
+                </LinkTo>
               </div>
             </li>
             <li class="nav-item text-center">

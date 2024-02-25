@@ -7,16 +7,13 @@
   <Site::Body @title="My saved roles">
 
     <div id="job-list" class="my-5">
-
-      {{! Results }}
       {{#if this.jobs.length}}
+        {{! Results }}
         {{#each this.jobs as |job|}}
           <Job::Card @job={{job}} />
         {{/each}}
-      {{/if}}
-
-      {{! Empty}}
-      {{#unless this.jobs.length}}
+      {{else}}
+        {{! No Results}}
         <div class="d-inline text-center">
           <h5 class="mb-4">
             <b>You have not saved anything for later</b>
@@ -27,8 +24,7 @@
             </LinkTo>
           </h6>
         </div>
-      {{/unless}}
-
+      {{/if}}
     </div>
 
   </Site::Body>

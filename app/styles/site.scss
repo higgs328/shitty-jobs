@@ -7,6 +7,22 @@
     margin: 0 auto;
   }
 
+  #link-to-favorites #star-1 {
+    display: block;
+  }
+
+  #link-to-favorites #star-2 {
+    display: none;
+  }
+
+  #link-to-favorites.active #star-1 {
+    display: none;
+  }
+
+  #link-to-favorites.active #star-2 {
+    display: block;
+  }
+
   @media (width <= 62rem) {
     #header .col-l {
       text-align: center !important;
@@ -21,4 +37,12 @@
       justify-content: center !important;
     }
   }
+}
+
+body {
+  background-color: var(--bs-dark);
+}
+
+.bg-smoke {
+  background-color: #eaebed !important;
 }
