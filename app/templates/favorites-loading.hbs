@@ -7,9 +7,12 @@
   <Site::Body @title="My saved roles">
 
     <div id="job-list" class="mb-4">
+
+      {{! Results}}
       {{#each (range 10) as |index|}}
         <Job::CardLoading @index={{index}} />
       {{/each}}
+      
     </div>
 
   </Site::Body>
