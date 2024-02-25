@@ -1,0 +1,19 @@
+{{page-title "Loading"}}
+
+<div id="site" class="bg-smoke">
+
+  <Site::Header />
+
+  <Site::Body @title="My saved roles">
+
+    <div id="job-list" class="mb-4">
+      {{#each (range 10) as |index|}}
+        <Job::CardLoading @index={{index}} />
+      {{/each}}
+    </div>
+
+  </Site::Body>
+
+  <Site::Footer />
+
+</div>

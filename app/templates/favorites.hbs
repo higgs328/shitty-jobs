@@ -1,0 +1,34 @@
+{{page-title "My saved roles"}}
+
+<div id="site" class="bg-smoke">
+
+  <Site::Header />
+
+  <Site::Body @title="My saved roles">
+
+    <div id="job-list" class="my-5">
+      {{#if this.jobs.length}}
+        {{! Results }}
+        {{#each this.jobs as |job|}}
+          <Job::Card @job={{job}} />
+        {{/each}}
+      {{else}}
+        {{! No Results}}
+        <div class="d-inline text-center">
+          <h5 class="mb-4">
+            <b>You have not saved anything for later</b>
+          </h5>
+          <h6 class="m-4">
+            <LinkTo @route="jobs" class="text-dark text-decoration-none">
+              Start your job search
+            </LinkTo>
+          </h6>
+        </div>
+      {{/if}}
+    </div>
+
+  </Site::Body>
+
+  <Site::Footer />
+
+</div>

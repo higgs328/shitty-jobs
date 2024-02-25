@@ -12,7 +12,7 @@ export default class JobSearchComponent extends Component {
   @action
   search(event) {
     event.preventDefault();
-    this.router.transitionTo({
+    this.router.transitionTo('jobs', {
       queryParams: {
         q: this.keywords,
         page: 1,
