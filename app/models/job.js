@@ -28,6 +28,7 @@ export default class JobModel extends Model {
   @attr titleCodeNo;
   @attr toApply;
   @attr workLocation;
+  @attr('bool', { defaultValue: false }) isFavorite;
 
   get currencyFormatter() {
     return new Intl.NumberFormat('en-US', {
