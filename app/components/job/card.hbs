@@ -21,7 +21,7 @@
               type="button"
               {{on "click" this.toggleFavorite}}
             >
-              {{#if @job.favorite.isFavorited}}
+              {{#if @job.isFavorite}}
                 <FaIcon @prefix="fas" @icon="star" class="fa-lg text-warning" />
               {{else}}
                 <FaIcon @prefix="far" @icon="star" class="fa-lg" />

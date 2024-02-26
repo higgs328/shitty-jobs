@@ -1,21 +1,23 @@
 import Route from '@ember/routing/route';
-import { service } from '@ember/service';
+import { later } from '@ember/runloop';
 import { action } from '@ember/object';
+import { service } from '@ember/service';
 
 export default class JobsRoute extends Route {
   @service store;
 
   async model(params) {
+    await new Promise((resolve) => later(resolve, 250));
+
     // Get Jobs
     let records = await this.store.query('job', { $q: params.q });
+    let favorites = await this.store.findAll('favorite');
 
     // Attach Favorites
-    records = await Promise.all(
-      records.map(async (record) => {
-        record.favorite = await this.store.findRecord('favorite', record.id);
-        return record;
-      }),
-    );
+    favorites.forEach((fav) => {
+      const job = this.store.peekRecord('job', fav.id);
+      job.isFavorite = fav.isFavorite;
+    });
 
     // Apply Filters
     return this.filter(records, params);

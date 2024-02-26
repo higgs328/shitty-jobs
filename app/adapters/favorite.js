@@ -1,26 +1,40 @@
 import ApplicationAdapter from './application';
+import { Promise } from 'rsvp';
+import { NotFoundError } from '@ember-data/adapter/error';
 
 export default class FavoriteAdapter extends ApplicationAdapter {
-  findRecord(store, type, id) {
-    // If the record is already in the store, return it.
-    const storeRecord = store.peekRecord(type.modelName, id);
-    if (storeRecord) {
-      return Promise.resolve(storeRecord);
-    }
-    // If the record is not in the store, get it from localStorage.
-    const localRecord = localStorage.getItem(`${type.modelName}-${id}`);
-    if (localRecord) {
-      return Promise.resolve(JSON.parse(localRecord));
-    }
-    // If the record is not in the store, set it in localStorage.
-    const newRecord = { id: id, isFavorited: false };
-    localStorage.setItem(`${type.modelName}-${id}`, JSON.stringify(newRecord));
-    return Promise.resolve(JSON.parse(newRecord));
+  findAll() {
+    return new Promise(function (resolve) {
+      resolve(
+        Object.keys(localStorage).map((key) => JSON.parse(localStorage[key])),
+      );
+    });
   }
 
-  updateRecord(store, type, snapshot) {
-    const { modelName, id } = snapshot;
-    const data = this.serialize(snapshot);
-    localStorage.setItem(`${modelName}-${id}`, JSON.stringify(data));
+  findRecord(store, type, id) {
+    return new Promise(function (resolve, reject) {
+      const data = localStorage.getItem(id);
+      if (data) {
+        resolve(JSON.parse(data));
+      } else {
+        reject(new NotFoundError());
+      }
+    });
+  }
+
+  createRecord(store, type, snapshot) {
+    const data = this.serialize(snapshot, { includeId: true });
+    return new Promise(function (resolve) {
+      localStorage.setItem(data.id, JSON.stringify(data));
+      resolve(data);
+    });
+  }
+
+  deleteRecord(store, type, snapshot) {
+    const data = this.serialize(snapshot, { includeId: true });
+    return new Promise(function (resolve) {
+      localStorage.removeItem(data.id);
+      resolve(data);
+    });
   }
 }
