@@ -1,0 +1,50 @@
+<div id="dropdown-section" class="px-5 mb-3">
+
+  <div class="row justify-content-center">
+
+    {{! agency }}
+    <JobFilter::Dropdown
+      @type="list"
+      @loading={{@loading}}
+      @results={{@results}}
+      @params={{@params}}
+      @param="agency"
+      @label="Agency"
+      @key="agency"
+    />
+
+    {{! civilServiceTitle }}
+    <JobFilter::Dropdown
+      @type="list"
+      @loading={{@loading}}
+      @results={{@results}}
+      @params={{@params}}
+      @param="title"
+      @label="Title"
+      @key="civilServiceTitle"
+    />
+
+    {{! titleClassification }}
+    <JobFilter::Dropdown
+      @type="list"
+      @loading={{@loading}}
+      @results={{@results}}
+      @params={{@params}}
+      @param="tclass"
+      @label="Class"
+      @key="titleClassification"
+    />
+
+    {{! salaryRangeTo }}
+    <JobFilter::Dropdown
+      @type="range"
+      @loading={{@loading}}
+      @results={{@results}}
+      @params={{@params}}
+      @param="salary"
+      @label="Salary"
+    />
+
+  </div>
+
+</div>

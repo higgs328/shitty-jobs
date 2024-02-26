@@ -1,0 +1,118 @@
+#job-list {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 80rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  transition: all 0.3s ease-out;
+  position: relative;
+}
+
+.job-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 25rem;
+  width: 20rem;
+
+  .border-secondary {
+    border-color: #d3d3d3 !important;
+  }
+
+  .card {
+    float: left;
+    margin: 1rem;
+    padding: 0.1rem;
+    perspective: 800px;
+    position: relative;
+    transition: all 0.3s ease-out;
+    transform-style: preserve-3d;
+    width: -webkit-fill-available; /* stylelint-disable-line */
+  }
+
+  .card-header {
+    max-height: 10rem;
+  }
+
+  .card-body {
+    max-height: 20rem;
+  }
+
+  .card-footer {
+    font-size: x-small;
+  }
+
+  .card:hover {
+    box-shadow: var(--bs-box-shadow) !important;
+    transform: scale(1.02);
+  }
+
+  .card.flipped {
+    transform: rotateY(180deg);
+  }
+
+  .card .face {
+    background: #fff;
+    backface-visibility: hidden;
+  }
+
+  .card .face.front {
+    font-variant: all-petite-caps;
+    transition: 1s;
+  }
+
+  .card .face.back {
+    transition: 1s;
+    transform: rotateY(-180deg);
+  }
+
+  .card.flipped .face.front,
+  .card:not(.flipped) .face.back {
+    display: none;
+  }
+
+  .card-title {
+    display: -webkit-box;
+    line-height: 1.2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+
+  .card .ribbon {
+    display: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    line-height: 1.8;
+    padding-inline: 1lh;
+    padding-bottom: 0.5em;
+    border-image: conic-gradient(#0008 0 0) 51% / 0.5em;
+    clip-path: polygon(
+      100% calc(100% - 0.5em),
+      100% 100%,
+      calc(100% - 0.5em) calc(100% - 0.5em),
+      0.5em calc(100% - 0.5em),
+      0 100%,
+      0 calc(100% - 0.5em),
+      999px calc(100% - 0.5em - 999px),
+      calc(100% - 999px) calc(100% - 0.5em - 999px)
+    );
+    transform: translate(calc((cos(45deg) - 1) * 100%), -100%) rotate(-45deg);
+    transform-origin: 100% 100%;
+  }
+
+  .card .ribbon-new {
+    background-color: var(--bs-success);
+    display: block;
+  }
+
+  .card.flipped .ribbon-new {
+    display: none;
+  }
+}

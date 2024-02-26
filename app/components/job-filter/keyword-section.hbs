@@ -1,0 +1,9 @@
+<div
+  id="keyword-section"
+  class="text-center {{unless @keywords 'd-none'}} mb-3"
+>
+  <div class="keyword-container">
+    <span class="keyword-label">Keywords:</span>
+    <JobFilter::Keyword @keywords={{@keywords}} />
+  </div>
+</div>

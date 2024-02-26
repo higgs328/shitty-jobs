@@ -1,0 +1,37 @@
+{{! Input }}
+<div class="p-2">
+  <small>
+    <Input
+      @type="text"
+      @value={{@inputValue}}
+      autocomplete="off"
+      aria-label="dropdown-option-filter"
+      class="dropdown-option-filter w-100 p-1 text-center"
+      placeholder={{@inputPlaceholder}}
+      disabled={{@inputDisabled}}
+      {{on "input" this.setFilter}}
+    />
+  </small>
+</div>
+
+{{! Content }}
+<ul class="list-group rounded-0">
+  {{yield this.filter}}
+</ul>
+
+{{! Buttons }}
+<div class="btn-group bg-secondary w-100 sticky-bottom">
+  <button
+    type="button"
+    class="btn rounded-0 w-50 btn-primary"
+    {{on "click" (fn @buttonApplyClicked @dropdownSelection)}}
+  >Apply</button>
+  <button
+    type="button"
+    class="btn rounded-0 w-50 btn-dark"
+    disabled={{@buttonClearDisabled}}
+    {{on "click" @buttonClearClicked}}
+  >
+    Clear
+  </button>
+</div>

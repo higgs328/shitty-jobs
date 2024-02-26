@@ -1,0 +1,10 @@
+<div id="result-section" class="mb-3">
+  <div class="fs-4 fw-bold text-center">
+    {{#if @loading}}
+      <FaIcon @icon="circle-notch" @spin={{true}} />
+    {{else}}
+      {{length @results}}
+    {{/if}}
+    results
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<JobFilter::Dropdown::DropdownContent
+  @inputValue={{currency this.value}}
+  @inputDisabled={{true}}
+  @dropdownSelection={{this.value}}
+  @buttonApplyClicked={{@apply}}
+  @buttonClearClicked={{@clear}}
+>
+  <div class="dropdown-option">
+    <li class="list-group-item list-group-item-light">
+      <Input
+        @type="range"
+        @value={{this.value}}
+        min={{@min}}
+        max={{@max}}
+        step={{@step}}
+        class="w-100"
+        aria-label="salary-range"
+      />
+    </li>
+  </div>
+
+</JobFilter::Dropdown::DropdownContent>

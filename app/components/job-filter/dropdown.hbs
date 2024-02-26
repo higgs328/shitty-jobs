@@ -1,0 +1,57 @@
+<div class="dropdown col col-md-3 mt-4 mb-3">
+  <BasicDropdown
+    @matchTriggerWidth={{true}}
+    @verticalPosition="below"
+    @onOpen={{this.autoScroll}}
+    as |dropdown|
+  >
+
+    {{! Trigger }}
+    <dropdown.Trigger class="border-bottom border-dark border-3">
+      <div class="trigger-label mb-1">
+        {{#if @loading}}
+          <FaIcon @icon="circle-notch" @spin={{true}} />
+        {{else}}
+          {{#if (has-key @params @param)}}
+            <small class="">
+              <FaIcon @icon="filter" class="text-primary" />
+            </small>
+          {{/if}}
+          <b>{{@label}}</b>
+          <FaIcon
+            @icon="angle-down"
+            @rotation={{if dropdown.isOpen 180 0}}
+            class="float-end mt-1"
+          />
+        {{/if}}
+      </div>
+    </dropdown.Trigger>
+
+    {{! Content }}
+    <dropdown.Content class="border border-top-0 border-dark border-3">
+      {{#if (eq @type "list")}}
+        <JobFilter::Dropdown::DropdownList
+          @results={{@results}}
+          @params={{@params}}
+          @param={{@param}}
+          @label={{@label}}
+          @key={{@key}}
+          @apply={{this.apply}}
+          @clear={{this.clear}}
+        />
+      {{/if}}
+      {{#if (eq @type "range")}}
+        <JobFilter::Dropdown::DropdownRange
+          @params={{@params}}
+          @param={{@param}}
+          @min={{0}}
+          @max={{300000}}
+          @step={{10000}}
+          @apply={{this.apply}}
+          @clear={{this.clear}}
+        />
+      {{/if}}
+    </dropdown.Content>
+
+  </BasicDropdown>
+</div>
