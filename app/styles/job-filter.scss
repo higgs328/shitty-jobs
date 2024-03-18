@@ -12,11 +12,15 @@
     text-transform: capitalize;
   }
 
-  #dropdown-section {
+  #dropdown-section .navbar-toggler {
+    z-index: 100;
+  }
+
+  #dropdown-items {
     background-color: #f6f6f6;
   }
 
-  #dropdown-section .row {
+  #dropdown-items .row {
     margin: 0 auto;
     max-width: 80rem;
   }
