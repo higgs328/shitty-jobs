@@ -14,10 +14,12 @@ export default class JobCardComponent extends Component {
     if (favorite) {
       favorite.destroyRecord();
     } else {
+      const type = 'favorite';
       const isFavorite = true;
       this.store
         .createRecord('favorite', {
           id,
+          type,
           isFavorite,
         })
         .save();
