@@ -6,7 +6,9 @@ export default class FavoriteAdapter extends ApplicationAdapter {
   findAll() {
     return new Promise(function (resolve) {
       resolve(
-        Object.keys(localStorage).map((key) => JSON.parse(localStorage[key])),
+        Object.keys(localStorage)
+          .map((key) => JSON.parse(localStorage[key]))
+          .filter((o) => o.type === 'favorite'),
       );
     });
   }
