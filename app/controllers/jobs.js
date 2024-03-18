@@ -48,4 +48,9 @@ export default class JobsController extends Controller {
     const { min, max, model } = this;
     return model.length ? `${min + 1}-${max} of ${model.length}` : 0;
   }
+
+  get maxProcessDate() {
+    const dates = this.model.map((j) => j.processDate);
+    return dates.reduce((max, date) => (date > max ? date : max));
+  }
 }
