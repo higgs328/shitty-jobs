@@ -1,50 +1,76 @@
-<div id="dropdown-section" class="px-5 mb-3">
+<div id="dropdown-section" class="text-center">
 
-  <div class="row justify-content-center">
+  {{! Navbar }}
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid justify-content-center">
 
-    {{! agency }}
-    <JobFilter::Dropdown
-      @type="list"
-      @loading={{@loading}}
-      @results={{@results}}
-      @params={{@params}}
-      @param="agency"
-      @label="Agency"
-      @key="agency"
-    />
+      {{! Toggler }}
+      <button
+        class="navbar-toggler mb-3"
+        type="button"
+        {{on "click" this.toggleDisplay}}
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-    {{! civilServiceTitle }}
-    <JobFilter::Dropdown
-      @type="list"
-      @loading={{@loading}}
-      @results={{@results}}
-      @params={{@params}}
-      @param="title"
-      @label="Title"
-      @key="civilServiceTitle"
-    />
+      {{! Collapse }}
+      <div
+        class="collapse navbar-collapse justify-content-center
+          {{if this.forceDisplay 'd-block'}}"
+        id="dropdown-filters"
+      >
+        <div id="dropdown-items" class="px-5 mb-3">
 
-    {{! titleClassification }}
-    <JobFilter::Dropdown
-      @type="list"
-      @loading={{@loading}}
-      @results={{@results}}
-      @params={{@params}}
-      @param="tclass"
-      @label="Class"
-      @key="titleClassification"
-    />
+          <div class="row justify-content-center">
 
-    {{! salaryRangeTo }}
-    <JobFilter::Dropdown
-      @type="range"
-      @loading={{@loading}}
-      @results={{@results}}
-      @params={{@params}}
-      @param="salary"
-      @label="Salary"
-    />
+            {{! agency }}
+            <JobFilter::Dropdown
+              @type="list"
+              @loading={{@loading}}
+              @results={{@results}}
+              @params={{@params}}
+              @param="agency"
+              @label="Agency"
+              @key="agency"
+            />
 
-  </div>
+            {{! civilServiceTitle }}
+            <JobFilter::Dropdown
+              @type="list"
+              @loading={{@loading}}
+              @results={{@results}}
+              @params={{@params}}
+              @param="title"
+              @label="Title"
+              @key="civilServiceTitle"
+            />
+
+            {{! titleClassification }}
+            <JobFilter::Dropdown
+              @type="list"
+              @loading={{@loading}}
+              @results={{@results}}
+              @params={{@params}}
+              @param="tclass"
+              @label="Class"
+              @key="titleClassification"
+            />
+
+            {{! salaryRangeTo }}
+            <JobFilter::Dropdown
+              @type="range"
+              @loading={{@loading}}
+              @results={{@results}}
+              @params={{@params}}
+              @param="salary"
+              @label="Salary"
+            />
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </nav>
 
 </div>
