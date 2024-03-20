@@ -2,10 +2,13 @@ import Controller from '@ember/controller';
 import { tracked } from '@glimmer/tracking';
 
 export default class JobsController extends Controller {
-  queryParams = ['q', 'page', 'agency', 'title', 'tclass', 'salary'];
+  queryParams = ['q', 'page', 'order', 'agency', 'title', 'tclass', 'salary'];
 
   @tracked
   page = 1;
+
+  @tracked
+  order = 'posting_date desc';
 
   @tracked
   salary = 0;

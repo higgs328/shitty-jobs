@@ -10,13 +10,18 @@ export default class JobsRoute extends Route {
     await new Promise((resolve) => later(resolve, 250));
 
     // Get Jobs
-    let records = await this.store.query('job', { $q: params.q });
-    let favorites = await this.store.findAll('favorite');
+    let records = await this.store.query('job', {
+      $q: params.q,
+      $order: params.order,
+    });
 
     // Attach Favorites
+    let favorites = await this.store.findAll('favorite');
     favorites.forEach((fav) => {
       const job = this.store.peekRecord('job', fav.id);
-      job.isFavorite = fav.isFavorite;
+      if (job) {
+        job.isFavorite = fav.isFavorite;
+      }
     });
 
     // Apply Filters

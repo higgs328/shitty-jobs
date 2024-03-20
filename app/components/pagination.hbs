@@ -1,6 +1,30 @@
-<div id={{@id}} class="d-flex justify-content-center">
+<div id={{@id}} class="d-flex flex-wrap justify-content-center">
 
-  <div class="btn-group">
+  {{! Sort Controls }}
+  <div class="btn-group mb-3 mx-2">
+
+    {{! Posting Date }}
+    <LinkTo
+      class="btn btn-outline-dark"
+      @route="jobs"
+      @query={{hash order="posting_date desc"}}
+    >
+      <FaIcon @icon="calendar-days" />
+    </LinkTo>
+
+    {{! Salary }}
+    <LinkTo
+      class="btn btn-outline-dark"
+      @route="jobs"
+      @query={{hash order="salary_range_to desc"}}
+    >
+      <FaIcon @icon="money-bill-1" />
+    </LinkTo>
+
+  </div>
+
+  {{! Pagination Controls}}
+  <div class="btn-group mb-3 mx-2">
 
     {{! Previous }}
     <LinkTo
